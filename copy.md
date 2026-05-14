@@ -1,11 +1,11 @@
-# eManômetros — Home Page Completa
+# Press Control — Home Page Completa
 
 ## Empresa
-- Nome: eManômetros (substitui PressControl)
+- Nome: Press Control (substitui PressControl)
 - Localização: Rua Platina, 693 - Prado, Belo Horizonte - MG
 - Telefone/WhatsApp: (31) 99972-8693 (PENDENTE: usuário vai confirmar novo número)
-- Email: contato@emanometros.com.br
-- Instagram: @emanometros
+- Email: contato@presscontrol.com.br
+- Instagram: @presscontrol
 - Horário: Segunda a Sexta 8h às 18h | Sábado 8h às 12h
 
 ---
@@ -16,7 +16,7 @@
 ---
 
 ## Seção 2: Navbar
-- Logo: eManômetros (e em cyan + Manômetros em branco)
+- Logo: Press Control (e em cyan + Manômetros em branco)
 - Links: Manômetros | Manovacuômetros | Vacuômetros | Termômetros | Sobre
 - Busca: ícone que expande
 - CTA: "Fale Conosco" → WhatsApp (verde)
@@ -133,7 +133,7 @@ Controle de temperatura robusto e preciso. Monitore a temperatura com a robustez
 
 ---
 
-## Seção 7: Por Que Escolher a eManômetros (APROVADO)
+## Seção 7: Por Que Escolher a Press Control (APROVADO)
 
 1. **Personalização com Sua Logo** — Deixe sua marca em cada medição. Personalizamos manômetros com o logo e as cores da sua empresa, garantindo uma apresentação profissional e única.
 2. **Pronta Entrega** — Agilidade garantida: produtos em estoque prontos para envio imediato. Mantenha seus projetos em movimento sem esperar semanas.
@@ -198,7 +198,7 @@ As exigências legais para vasos de pressão e caldeiras, e como manter sua inst
 ## Seção 12: Footer
 
 ### Coluna 1: Sobre
-eManômetros — Instrumentação industrial com precisão, qualidade e entrega rápida. Soluções completas em medição de pressão, vácuo e temperatura para sua operação.
+Press Control — Instrumentação industrial com precisão, qualidade e entrega rápida. Soluções completas em medição de pressão, vácuo e temperatura para sua operação.
 
 ### Coluna 2: Produtos
 - Manômetros
@@ -217,9 +217,9 @@ eManômetros — Instrumentação industrial com precisão, qualidade e entrega 
 
 ### Coluna 4: Contato
 - WhatsApp: (31) 99972-8693
-- Email: contato@emanometros.com.br
+- Email: contato@presscontrol.com.br
 - Endereço: Rua Platina, 693 - Prado, BH - MG
 - Horário: Seg-Sex 8h-18h | Sáb 8h-12h
 
 ### Rodapé
-© 2026 eManômetros. Todos os direitos reservados.
+© 2026 Press Control. Todos os direitos reservados.

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo Completo — Press Control</title>
+  <meta name="description" content="Catálogo completo de manômetros, manovacuômetros, vacuômetros e termômetros industriais com ficha técnica e pronta entrega.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    /* Critical CSS — above-the-fold */
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--navy:#0A1628;--navy-light:#152238;--steel-blue:#1E3A5F;--electric-blue:#0078D4;--electric-blue-hover:#0063b1;--cyan:#00B4D8;--slate-50:#F8FAFC;--slate-200:#E2E8F0;--slate-400:#94A3B8;--slate-600:#475569;--slate-900:#0F172A;--whatsapp:#25D366;--font-display:'Plus Jakarta Sans',system-ui,sans-serif;--font-body:'DM Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+    body{font-family:var(--font-body);color:var(--slate-900);background:var(--slate-50);line-height:1.6;overflow-x:hidden;padding-top:40px}
+    a{text-decoration:none;color:inherit}button{border:none;cursor:pointer;background:none;font-family:inherit}
+    .topbar{position:fixed;top:0;left:0;right:0;z-index:1001;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);border-bottom:1px solid rgba(0,180,216,.15)}
+    .topbar__container{max-width:1280px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap}
+    .topbar__item{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);letter-spacing:.02em;white-space:nowrap}
+    .navbar{position:relative;z-index:100;background:var(--navy-light);border-bottom:1px solid rgba(255,255,255,.06)}
+    .navbar__container{max-width:1280px;margin:0 auto;padding:0 32px;height:72px;display:flex;align-items:center;justify-content:space-between}
+    .navbar__links{display:flex;align-items:center;gap:32px}
+    .navbar__links a{font-size:.9rem;font-weight:500;color:var(--slate-400)}
+    .navbar__cta{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#1a9e4a;color:#fff;font-size:.85rem;font-weight:700;border-radius:100px}
+    .navbar__toggle{display:none;color:#fff;padding:8px;background:transparent;border:0;cursor:pointer;border-radius:8px}
+    .pc-logo{display:inline-flex;align-items:center;gap:10px;line-height:1;text-decoration:none}
+    .pc-logo .pc-mark{color:#fff;flex-shrink:0;display:block}
+    .pc-logo .pc-mark__needle{stroke:var(--cyan)}
+    .pc-logo .pc-wordmark{font-family:var(--font-display);font-weight:700;font-size:1.25rem;letter-spacing:-.02em;color:#fff}
+    .catalog-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--steel-blue) 100%);padding:64px 0 48px;position:relative;overflow:hidden}
+    .catalog-hero__container{max-width:1280px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+    .catalog-hero__title{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,4vw,3rem);color:#fff;line-height:1.1;letter-spacing:-.03em;margin-top:8px;margin-bottom:16px}
+    .catalog-hero__sub{font-size:1rem;color:var(--slate-400);line-height:1.65;max-width:640px}
+    .catalog-hero__stats{display:flex;gap:48px;margin-top:32px;flex-wrap:wrap}
+    .catalog-hero__stats strong{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:#fff}
+    .catalog-hero__stats span{font-size:.75rem;color:var(--slate-400);text-transform:uppercase;letter-spacing:.08em}
+    .section-label{display:block;font-family:var(--font-mono);font-size:.75rem;font-weight:500;color:var(--electric-blue);text-transform:uppercase;letter-spacing:.12em;margin-bottom:16px}
+    .section-label--cyan{color:var(--cyan)}
+    .section-title--accent{color:var(--electric-blue)}
+    .whatsapp-float{position:fixed;bottom:24px;right:24px;z-index:999;width:60px;height:60px;background:var(--whatsapp);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4)}
+    @media(max-width:1024px){.navbar__links{display:none}.navbar__toggle{display:inline-flex;align-items:center;justify-content:center}.navbar__cta{display:none}}
+    @media(max-width:768px){.topbar{display:none}.navbar{position:fixed;top:0;left:0;right:0;z-index:1001}body{padding-top:64px}.navbar__container{height:64px;padding:0 16px}.pc-logo .pc-wordmark{font-size:1.1rem}.pc-logo .pc-mark{width:28px;height:28px}.catalog-hero{padding:28px 0 20px}.catalog-hero__container{padding:0 20px}.whatsapp-float{bottom:16px;right:16px;width:52px;height:52px}}
+  </style>
+  <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style.css"></noscript>
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar__container">
+      <div class="topbar__item">Personalização com Sua Logo</div>
+      <div class="topbar__item">Pronta Entrega</div>
+      <div class="topbar__item">Consultores Especializados</div>
+      <div class="topbar__item">Envio para Todo Brasil</div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="index.html" class="pc-logo navbar__logo"><svg class="pc-mark" width="32" height="32" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" fill="none"><circle cx="50" cy="50" r="46" stroke-width="3.5"/><g stroke-linecap="round"><line x1="50" y1="20" x2="50" y2="10" stroke-width="2.4"/><line x1="59.06" y1="16.19" x2="60.35" y2="11.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="67.5" y1="19.69" x2="70" y2="15.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="73.33" y1="26.67" x2="78.28" y2="21.72" stroke-width="1.4" stroke-opacity=".85"/><line x1="80.31" y1="32.5" x2="84.64" y2="30" stroke-width="1.4" stroke-opacity=".45"/><line x1="83.81" y1="40.94" x2="88.64" y2="39.65" stroke-width="1.4" stroke-opacity=".45"/><line x1="80" y1="50" x2="90" y2="50" stroke-width="2.4"/><line x1="83.81" y1="59.06" x2="88.64" y2="60.35" stroke-width="1.4" stroke-opacity=".45"/><line x1="80.31" y1="67.5" x2="84.64" y2="70" stroke-width="1.4" stroke-opacity=".45"/><line x1="73.33" y1="73.33" x2="78.28" y2="78.28" stroke-width="1.4" stroke-opacity=".85"/><line x1="67.5" y1="80.31" x2="70" y2="84.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="59.06" y1="83.81" x2="60.35" y2="88.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="50" y1="80" x2="50" y2="90" stroke-width="2.4"/><line x1="40.94" y1="83.81" x2="39.65" y2="88.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="32.5" y1="80.31" x2="30" y2="84.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="26.67" y1="73.33" x2="21.72" y2="78.28" stroke-width="1.4" stroke-opacity=".85"/><line x1="19.69" y1="67.5" x2="15.36" y2="70" stroke-width="1.4" stroke-opacity=".45"/><line x1="16.19" y1="59.06" x2="11.36" y2="60.35" stroke-width="1.4" stroke-opacity=".45"/><line x1="20" y1="50" x2="10" y2="50" stroke-width="2.4"/><line x1="16.19" y1="40.94" x2="11.36" y2="39.65" stroke-width="1.4" stroke-opacity=".45"/><line x1="19.69" y1="32.5" x2="15.36" y2="30" stroke-width="1.4" stroke-opacity=".45"/><line x1="26.67" y1="26.67" x2="21.72" y2="21.72" stroke-width="1.4" stroke-opacity=".85"/><line x1="32.5" y1="19.69" x2="30" y2="15.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="40.94" y1="16.19" x2="39.65" y2="11.36" stroke-width="1.4" stroke-opacity=".45"/></g><line class="pc-mark__needle" x1="44.8" y1="53" x2="74.25" y2="36" stroke-width="4" stroke-linecap="round"/></g><circle cx="50" cy="50" r="4" fill="currentColor"/><circle cx="50" cy="50" r="1.6" fill="#F8FAFC"/></svg><span class="pc-wordmark">Press Control</span></a>
+      <div class="navbar__links">
+        <a href="index.html#categorias">Início</a>
+        <a href="catalogo.html?categoria=manometros">Manômetros</a>
+        <a href="catalogo.html?categoria=vacuometros">Vacuômetros</a>
+        <a href="catalogo.html?categoria=manovacuometros">Manovacuômetros</a>
+        <a href="catalogo.html?categoria=termometros">Termômetros</a>
+        <a href="index.html#sobre">Sobre</a>
+      </div>
+      <button class="navbar__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+      <button class="navbar__cta wa-btn" data-msg="preciso de ajuda" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 00.603.603l5.822-1.458A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        Fale Conosco
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO COMPACTO -->
+  <header class="catalog-hero">
+    <div class="catalog-hero__container">
+      <span class="section-label section-label--cyan">Catálogo Completo</span>
+      <h1 class="catalog-hero__title">Todos os instrumentos<br><span class="section-title--accent">em um só lugar.</span></h1>
+      <p class="catalog-hero__sub">Manômetros, manovacuômetros, vacuômetros e termômetros industriais. Clique em <strong>Data Sheet</strong> para ver a ficha técnica completa de cada produto.</p>
+      <div class="catalog-hero__stats">
+        <div><strong id="statTotal">—</strong><span>Produtos</span></div>
+        <div><strong id="statCats">4</strong><span>Categorias</span></div>
+        <div><strong>24h</strong><span>Envio</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FILTROS -->
+  <section class="catalog-filters" id="catalogFilters">
+    <div class="catalog-filters__container">
+      <div class="catalog-filters__row">
+        <div class="catalog-filters__group">
+          <span class="catalog-filters__label">Categoria</span>
+          <div class="catalog-filters__chips" data-filter="categoria">
+            <button class="chip chip--active" data-value="">Todos</button>
+            <button class="chip" data-value="manometros">Manômetros</button>
+            <button class="chip" data-value="manovacuometros">Manovacuômetros</button>
+            <button class="chip" data-value="vacuometros">Vacuômetros</button>
+            <button class="chip" data-value="termometros">Termômetros</button>
+          </div>
+        </div>
+        <div class="catalog-filters__group">
+          <span class="catalog-filters__label">Material</span>
+          <div class="catalog-filters__chips" data-filter="material_class">
+            <button class="chip chip--active" data-value="">Todos</button>
+            <button class="chip" data-value="aco-carbono">Aço Carbono</button>
+            <button class="chip" data-value="inox-latao">Inox + Latão</button>
+            <button class="chip" data-value="total-inox">Total Inox</button>
+          </div>
+        </div>
+      </div>
+      <div class="catalog-filters__row">
+        <div class="catalog-filters__group">
+          <span class="catalog-filters__label">Glicerina</span>
+          <div class="catalog-filters__chips" data-filter="glicerina">
+            <button class="chip chip--active" data-value="">Todos</button>
+            <button class="chip" data-value="true">Sim</button>
+            <button class="chip" data-value="false">Não</button>
+          </div>
+        </div>
+        <div class="catalog-filters__group catalog-filters__group--search">
+          <span class="catalog-filters__label">Buscar</span>
+          <input type="search" class="catalog-search" id="catalogSearch" placeholder="Ex: DSA 100mm, Bourdon, prensa...">
+        </div>
+      </div>
+      <div class="catalog-filters__summary">
+        <span id="resultCount">— produtos</span>
+        <button class="catalog-filters__reset" type="button" id="resetFilters">Limpar filtros</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <main class="catalog-main">
+    <div class="catalog-main__container">
+      <div class="catalog-grid" id="catalogGrid">
+        <div class="catalog-empty" id="catalogEmpty" hidden>
+          <h3>Nenhum produto encontrado</h3>
+          <p>Tente ajustar os filtros ou fale com um especialista para encontrar o instrumento ideal.</p>
+          <button class="btn btn--whatsapp wa-btn" type="button" data-msg="preciso de ajuda para encontrar um produto">Falar com Especialista</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="sobre">
+    <div class="footer__main">
+      <div class="footer__container">
+        <div class="footer__col footer__col--about">
+          <a href="index.html" class="pc-logo footer__logo"><svg class="pc-mark" width="28" height="28" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" fill="none"><circle cx="50" cy="50" r="46" stroke-width="3.5"/><g stroke-linecap="round"><line x1="50" y1="20" x2="50" y2="10" stroke-width="2.4"/><line x1="59.06" y1="16.19" x2="60.35" y2="11.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="67.5" y1="19.69" x2="70" y2="15.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="73.33" y1="26.67" x2="78.28" y2="21.72" stroke-width="1.4" stroke-opacity=".85"/><line x1="80.31" y1="32.5" x2="84.64" y2="30" stroke-width="1.4" stroke-opacity=".45"/><line x1="83.81" y1="40.94" x2="88.64" y2="39.65" stroke-width="1.4" stroke-opacity=".45"/><line x1="80" y1="50" x2="90" y2="50" stroke-width="2.4"/><line x1="83.81" y1="59.06" x2="88.64" y2="60.35" stroke-width="1.4" stroke-opacity=".45"/><line x1="80.31" y1="67.5" x2="84.64" y2="70" stroke-width="1.4" stroke-opacity=".45"/><line x1="73.33" y1="73.33" x2="78.28" y2="78.28" stroke-width="1.4" stroke-opacity=".85"/><line x1="67.5" y1="80.31" x2="70" y2="84.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="59.06" y1="83.81" x2="60.35" y2="88.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="50" y1="80" x2="50" y2="90" stroke-width="2.4"/><line x1="40.94" y1="83.81" x2="39.65" y2="88.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="32.5" y1="80.31" x2="30" y2="84.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="26.67" y1="73.33" x2="21.72" y2="78.28" stroke-width="1.4" stroke-opacity=".85"/><line x1="19.69" y1="67.5" x2="15.36" y2="70" stroke-width="1.4" stroke-opacity=".45"/><line x1="16.19" y1="59.06" x2="11.36" y2="60.35" stroke-width="1.4" stroke-opacity=".45"/><line x1="20" y1="50" x2="10" y2="50" stroke-width="2.4"/><line x1="16.19" y1="40.94" x2="11.36" y2="39.65" stroke-width="1.4" stroke-opacity=".45"/><line x1="19.69" y1="32.5" x2="15.36" y2="30" stroke-width="1.4" stroke-opacity=".45"/><line x1="26.67" y1="26.67" x2="21.72" y2="21.72" stroke-width="1.4" stroke-opacity=".85"/><line x1="32.5" y1="19.69" x2="30" y2="15.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="40.94" y1="16.19" x2="39.65" y2="11.36" stroke-width="1.4" stroke-opacity=".45"/></g><line class="pc-mark__needle" x1="44.8" y1="53" x2="74.25" y2="36" stroke-width="4" stroke-linecap="round"/></g><circle cx="50" cy="50" r="4" fill="currentColor"/><circle cx="50" cy="50" r="1.6" fill="#F8FAFC"/></svg><span class="pc-wordmark">Press Control</span></a>
+          <p class="footer__about-text">Instrumentação industrial com precisão, qualidade e entrega rápida para sua operação.</p>
+        </div>
+        <div class="footer__col"><h4 class="footer__col-title">Produtos</h4><ul class="footer__links"><li><a href="catalogo.html?categoria=manometros">Manômetros</a></li><li><a href="catalogo.html?categoria=manovacuometros">Manovacuômetros</a></li><li><a href="catalogo.html?categoria=vacuometros">Vacuômetros</a></li><li><a href="catalogo.html?categoria=termometros">Termômetros</a></li></ul></div>
+        <div class="footer__col"><h4 class="footer__col-title">Institucional</h4><ul class="footer__links"><li><a href="index.html#sobre">Sobre Nós</a></li><li><a href="index.html#produtos">Destaques</a></li><li><a href="catalogo.html">Catálogo Completo</a></li></ul></div>
+        <div class="footer__col"><h4 class="footer__col-title">Contato</h4>
+          <div class="footer__contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>(31) 9571-3196</span></div>
+          <div class="footer__contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><a href="mailto:contato@presscontrol.com.br">contato@presscontrol.com.br</a></div>
+          <div class="footer__contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Rua Platina, 693 - Prado, BH</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bar"><div class="footer__bar-container"><span class="footer__copyright">© 2026 Press Control. Todos os direitos reservados.</span></div></div>
+  </footer>
+
+  <!-- MOBILE MENU DRAWER -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu__backdrop"></div>
+    <aside class="mobile-menu__panel">
+      <div class="mobile-menu__header">
+        <a href="index.html" class="pc-logo navbar__logo"><svg class="pc-mark" width="32" height="32" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" fill="none"><circle cx="50" cy="50" r="46" stroke-width="3.5"/><g stroke-linecap="round"><line x1="50" y1="20" x2="50" y2="10" stroke-width="2.4"/><line x1="80" y1="50" x2="90" y2="50" stroke-width="2.4"/><line x1="50" y1="80" x2="50" y2="90" stroke-width="2.4"/><line x1="20" y1="50" x2="10" y2="50" stroke-width="2.4"/></g><line class="pc-mark__needle" x1="44.8" y1="53" x2="74.25" y2="36" stroke-width="4" stroke-linecap="round"/></g><circle cx="50" cy="50" r="4" fill="currentColor"/><circle cx="50" cy="50" r="1.6" fill="#F8FAFC"/></svg><span class="pc-wordmark">Press Control</span></a>
+        <button class="mobile-menu__close" type="button" aria-label="Fechar menu">&times;</button>
+      </div>
+      <nav class="mobile-menu__nav">
+        <a href="index.html">Início</a>
+        <a href="catalogo.html?categoria=manometros">Manômetros</a>
+        <a href="catalogo.html?categoria=vacuometros">Vacuômetros</a>
+        <a href="catalogo.html?categoria=manovacuometros">Manovacuômetros</a>
+        <a href="catalogo.html?categoria=termometros">Termômetros</a>
+        <a href="catalogo.html">Catálogo Completo</a>
+        <a href="index.html#sobre">Sobre</a>
+      </nav>
+      <div class="mobile-menu__footer">
+        <button class="btn btn--whatsapp wa-btn" data-msg="preciso de ajuda" type="button">Falar no WhatsApp</button>
+        <a href="tel:+553195713196" class="mobile-menu__phone">(31) 9571-3196</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- WHATSAPP FLOAT -->
+  <button class="whatsapp-float wa-btn" type="button" data-msg="preciso de ajuda" aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 00.603.603l5.822-1.458A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.82 0-3.543-.476-5.036-1.308l-.352-.206-3.65.914.914-3.65-.206-.352A9.96 9.96 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+  </button>
+
+  <!-- BAIXAR CATÁLOGO (botão flutuante esquerdo, download direto) -->
+  <a class="catalog-download" href="catalogo-presscontrol.pdf" download="Catalogo-PressControl.pdf" aria-label="Baixar Catálogo">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    <span>Baixar Catálogo</span>
+  </a>
+
+  <!-- MODAL CAPTURA WHATSAPP (mesma estrutura do index.html) -->
+  <div class="wa-modal" id="waModal">
+    <div class="wa-modal__backdrop"></div>
+    <div class="wa-modal__content">
+      <button class="wa-modal__close" type="button">&times;</button>
+      <div class="wa-modal__icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 00.603.603l5.822-1.458A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.82 0-3.543-.476-5.036-1.308l-.352-.206-3.65.914.914-3.65-.206-.352A9.96 9.96 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg></div>
+      <h3 class="wa-modal__title">Fale com um especialista</h3>
+      <p class="wa-modal__subtitle" id="waModalSubtitle">Preencha seus dados para iniciar o atendimento</p>
+      <form class="wa-modal__form" id="waForm">
+        <input type="hidden" id="waProduct" value="">
+        <input type="hidden" id="waSpecs" value="">
+        <input type="hidden" id="waMsg" value="">
+        <input type="hidden" id="waAction" value="">
+        <div class="wa-modal__field"><label for="waName">Seu nome</label><input type="text" id="waName" placeholder="Ex: João Silva" required autocomplete="name"></div>
+        <div class="wa-modal__field"><label for="waPhone">Seu telefone</label><input type="tel" id="waPhone" placeholder="(31) 99999-9999" required autocomplete="tel"></div>
+        <button type="submit" class="wa-modal__submit"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 00.603.603l5.822-1.458A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg> <span id="waSubmitLabel">Iniciar Conversa no WhatsApp</span></button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL DATA SHEET -->
+  <div class="ds-modal" id="dsModal">
+    <div class="ds-modal__backdrop"></div>
+    <div class="ds-modal__content">
+      <button class="ds-modal__close" type="button" aria-label="Fechar">&times;</button>
+      <div class="ds-modal__layout">
+        <div class="ds-modal__image-wrap">
+          <div class="ds-modal__gallery" id="dsGallery"></div>
+        </div>
+        <div class="ds-modal__body">
+          <span class="ds-modal__category" id="dsCategory"></span>
+          <h2 class="ds-modal__title" id="dsTitle"></h2>
+          <dl class="ds-modal__specs" id="dsSpecs"></dl>
+          <div class="ds-modal__application">
+            <span class="ds-modal__app-label">Aplicação</span>
+            <p id="dsApplication"></p>
+          </div>
+          <button class="ds-modal__cta wa-btn" id="dsCta" type="button"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 00.603.603l5.822-1.458A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg> Pedir Orçamento via WhatsApp</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Catálogo: carrega JSON e renderiza
+    (function () {
+      const grid = document.getElementById('catalogGrid');
+      const empty = document.getElementById('catalogEmpty');
+      const search = document.getElementById('catalogSearch');
+      const resultCount = document.getElementById('resultCount');
+      const statTotal = document.getElementById('statTotal');
+      const resetBtn = document.getElementById('resetFilters');
+
+      const state = { categoria: '', material_class: '', glicerina: '', search: '' };
+      let allProducts = [];
+
+      const CAT_LABEL = {
+        manometros: 'Manômetros',
+        manovacuometros: 'Manovacuômetros',
+        vacuometros: 'Vacuômetros',
+        termometros: 'Termômetros',
+      };
+
+      // Lê ?categoria=... da URL para pré-selecionar
+      const urlCat = new URLSearchParams(location.search).get('categoria');
+      if (urlCat && CAT_LABEL[urlCat]) state.categoria = urlCat;
+
+      function summaryFor(p) {
+        const parts = [];
+        if (p.specs.diametro) parts.push(p.specs.diametro);
+        if (p.specs.material) parts.push(p.specs.material.split('e os')[0].trim());
+        if (p.specs.conexao) parts.push(p.specs.conexao);
+        return parts.join(' · ');
+      }
+
+      function badgeFor(p) {
+        const ok = ['aco-carbono', 'inox-latao'].includes(p.material_class);
+        if (ok && p.diametro_mm && p.diametro_mm <= 100) {
+          return '<span class="product-card__badge product-card__badge--stock">Pronta Entrega</span>';
+        }
+        return '<span class="product-card__badge product-card__badge--consult">Sob Consulta</span>';
+      }
+
+      function renderCard(p) {
+        const cat = CAT_LABEL[p.categoria] || p.categoria;
+        const hasFront = !!p.imagem;
+        const hasBack = !!p.imagem_verso;
+        const flippable = hasFront && hasBack;
+        const front = hasFront
+          ? `<img src="${p.imagem}" alt="${p.nome}" loading="lazy">`
+          : `<svg viewBox="0 0 80 80" width="60" fill="none" stroke="#94A3B8" stroke-width="1.5" opacity=".25"><circle cx="40" cy="42" r="30"/><line x1="40" y1="42" x2="52" y2="28"/><circle cx="40" cy="42" r="3"/></svg>`;
+        const back = hasBack ? `<img src="${p.imagem_verso}" alt="${p.nome} (verso)" loading="lazy">` : '';
+        return `
+          <article class="product-card${flippable ? ' product-card--flippable' : ''}" data-id="${p.id}">
+            ${badgeFor(p)}
+            <button class="product-card__image product-card__image--btn" type="button" data-action="datasheet" data-id="${p.id}" aria-label="Ver ficha técnica">
+              <div class="product-card__flip">
+                <div class="product-card__flip-face">${front}</div>
+                ${flippable ? `<div class="product-card__flip-face product-card__flip-face--back">${back}</div>` : ''}
+              </div>
+              ${flippable ? '<span class="product-card__flip-hint">passe o mouse</span>' : ''}
+            </button>
+            <div class="product-card__content">
+              <span class="product-card__category">${cat}</span>
+              <h3 class="product-card__name">${p.nome}</h3>
+              <span class="product-card__specs">${summaryFor(p)}</span>
+              <button class="product-card__cta wa-btn" type="button" data-product="${p.nome}" data-specs="${summaryFor(p)}">Pedir Orçamento</button>
+              <button class="product-card__datasheet" type="button" data-action="datasheet" data-id="${p.id}">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                Data Sheet
+              </button>
+            </div>
+          </article>`;
+      }
+
+      function applyFilters() {
+        const q = (state.search || '').toLowerCase().trim();
+        const filtered = allProducts.filter(p => {
+          if (state.categoria && p.categoria !== state.categoria) return false;
+          if (state.material_class && p.material_class !== state.material_class) return false;
+          if (state.glicerina !== '' && String(p.glicerina) !== state.glicerina) return false;
+          if (q) {
+            const hay = (p.nome + ' ' + Object.values(p.specs).join(' ') + ' ' + (p.aplicacao || '')).toLowerCase();
+            if (!hay.includes(q)) return false;
+          }
+          return true;
+        });
+
+        empty.hidden = filtered.length > 0;
+        grid.innerHTML = filtered.map(renderCard).join('') + (empty.hidden ? '' : empty.outerHTML);
+        resultCount.textContent = filtered.length === allProducts.length
+          ? `${filtered.length} produtos`
+          : `${filtered.length} de ${allProducts.length} produtos`;
+      }
+
+      // Filtros (chips)
+      document.querySelectorAll('.catalog-filters__chips').forEach(group => {
+        const field = group.dataset.filter;
+        group.addEventListener('click', e => {
+          const btn = e.target.closest('.chip');
+          if (!btn) return;
+          group.querySelectorAll('.chip').forEach(c => c.classList.remove('chip--active'));
+          btn.classList.add('chip--active');
+          state[field] = btn.dataset.value;
+          applyFilters();
+        });
+      });
+
+      // Reset
+      resetBtn.addEventListener('click', () => {
+        state.categoria = ''; state.material_class = ''; state.glicerina = ''; state.search = '';
+        search.value = '';
+        document.querySelectorAll('.catalog-filters__chips').forEach(group => {
+          group.querySelectorAll('.chip').forEach((c, i) => c.classList.toggle('chip--active', i === 0));
+        });
+        applyFilters();
+      });
+
+      // Busca
+      let searchTimer;
+      search.addEventListener('input', e => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => {
+          state.search = e.target.value;
+          applyFilters();
+        }, 150);
+      });
+
+      // Pre-selecionar chip pela URL
+      if (state.categoria) {
+        document.querySelectorAll('.catalog-filters__chips[data-filter="categoria"] .chip').forEach(c => {
+          c.classList.toggle('chip--active', c.dataset.value === state.categoria);
+        });
+      }
+
+      // Datasheet button delegation
+      document.addEventListener('click', e => {
+        const ds = e.target.closest('[data-action="datasheet"]');
+        if (!ds) return;
+        e.preventDefault();
+        const id = ds.dataset.id;
+        if (window.eMan && window.eMan.openDatasheet) {
+          window.eMan.openDatasheet(id);
+        }
+      });
+
+      // Carregar JSON
+      fetch('data/products.json')
+        .then(r => r.json())
+        .then(data => {
+          allProducts = data;
+          if (window.eMan) window.eMan.setProducts(data);
+          statTotal.textContent = data.length;
+          applyFilters();
+        })
+        .catch(err => {
+          console.error('Erro ao carregar catálogo', err);
+          grid.innerHTML = '<p style="padding:32px;text-align:center;color:var(--slate-600)">Não foi possível carregar o catálogo. Recarregue a página.</p>';
+        });
+    })();
+  </script>
+
+</body>
+</html>

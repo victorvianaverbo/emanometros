@@ -1,4 +1,4 @@
-# eManômetros — Especificação Completa de Layout
+# Press Control — Especificação Completa de Layout
 
 ## Linguagem Visual Aprovada
 
@@ -322,7 +322,7 @@ CTA WhatsApp:
 
 ---
 
-## Seção 7: Por Que Escolher a eManômetros (APROVADA — manter como está)
+## Seção 7: Por Que Escolher a Press Control (APROVADA — manter como está)
 
 Referência: index.html linhas 175-240 + style.css .why
 - Arquétipo: Grid Assimétrico
@@ -591,7 +591,7 @@ Desktop:
 │ FOOTER BAR (padding 24px 0)                 │
 │ border-top: 1px solid rgba(255,255,255,0.06)│
 │                                             │
-│ © 2026 eManômetros          [Insta] [WhatsApp]│
+│ © 2026 Press Control          [Insta] [WhatsApp]│
 │                                             │
 │ flex, justify-content space-between         │
 └─────────────────────────────────────────────┘
@@ -624,7 +624,7 @@ Desktop:
 - Mesmo título da coluna 2
 - Itens com ícone + texto:
   - WhatsApp: ícone SVG 16x16 + "(31) 99972-8693" → link wa.me
-  - Email: ícone + "contato@emanometros.com.br" → mailto
+  - Email: ícone + "contato@presscontrol.com.br" → mailto
   - Endereço: ícone + "Rua Platina, 693 - Prado, BH"
   - Horário: ícone + "Seg-Sex 8h-18h | Sáb 8h-12h"
 - Font ícone+texto: DM Sans 400, 0.85rem, var(--slate-400)
