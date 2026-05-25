@@ -3,6 +3,8 @@
 :root{
   --navy:#0A1628;--navy-light:#152238;--steel-blue:#1E3A5F;
   --electric-blue:#0078D4;--electric-blue-hover:#0063b1;--cyan:#00B4D8;--amber:#F59E0B;
+  /* acentos de categoria (Design System) */
+  --cat-mano:#0078D4;--cat-manovac:#00B4D8;--cat-vac:#7C3AED;--cat-temp:#F59E0B;
   --slate-50:#F8FAFC;--slate-100:#F1F5F9;--slate-200:#E2E8F0;--slate-300:#CBD5E1;--slate-400:#94A3B8;--slate-600:#475569;--slate-800:#1E293B;--slate-900:#0F172A;
   --success:#10B981;--danger:#EF4444;--whatsapp:#25D366;--whatsapp-dark:#1DA851;
   --font-display:'Plus Jakarta Sans',sans-serif;--font-body:'DM Sans',sans-serif;--font-mono:'JetBrains Mono',monospace;
@@ -132,6 +134,19 @@ button{border:none;cursor:pointer;background:none;font-family:inherit}
 .cat-card--main .cat-card__desc{color:var(--slate-400)}
 .cat-card--main .cat-card__link{color:var(--cyan)}
 .cat-card--main:hover{box-shadow:0 20px 60px rgba(0,120,212,.15)}
+/* banda colorida superior por categoria (Design System) */
+.cat-card[data-cat]::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--electric-blue)}
+.cat-card[data-cat="manometros"]::before{background:var(--cat-mano)}
+.cat-card[data-cat="manovacuometros"]::before{background:var(--cat-manovac)}
+.cat-card[data-cat="vacuometros"]::before{background:var(--cat-vac)}
+.cat-card[data-cat="termometros"]::before{background:var(--cat-temp)}
+/* accent do ícone e do link por categoria (cards claros) */
+.cat-card[data-cat="manovacuometros"]:not(.cat-card--main) .cat-card__icon{stroke:var(--cat-manovac)}
+.cat-card[data-cat="manovacuometros"]:not(.cat-card--main) .cat-card__link{color:var(--cat-manovac)}
+.cat-card[data-cat="vacuometros"]:not(.cat-card--main) .cat-card__icon{stroke:var(--cat-vac)}
+.cat-card[data-cat="vacuometros"]:not(.cat-card--main) .cat-card__link{color:var(--cat-vac)}
+.cat-card[data-cat="termometros"]:not(.cat-card--main) .cat-card__icon{stroke:var(--cat-temp)}
+.cat-card[data-cat="termometros"]:not(.cat-card--main) .cat-card__link{color:var(--cat-temp)}
 .cat-card__icon{stroke:var(--electric-blue);margin-bottom:16px}
 .cat-card__name{font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--slate-900)}
 .cat-card__desc{font-size:.85rem;color:var(--slate-600);line-height:1.6;margin-top:8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
@@ -163,7 +178,13 @@ button{border:none;cursor:pointer;background:none;font-family:inherit}
 .product-card--flippable:hover .product-card__flip-hint{opacity:0}
 .product-card--flippable .product-card__flip-hint{opacity:.7}
 .product-card__content{padding:0 20px 20px}
-.product-card__category{display:block;font-family:var(--font-mono);font-size:.65rem;font-weight:500;color:var(--electric-blue);text-transform:uppercase;letter-spacing:.1em;margin-top:16px}
+.product-card__category{display:flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:.65rem;font-weight:500;color:var(--electric-blue);text-transform:uppercase;letter-spacing:.1em;margin-top:16px}
+.product-card__category::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;flex-shrink:0}
+/* acento por categoria (Design System) */
+.product-card[data-cat="manometros"] .product-card__category{color:var(--cat-mano)}
+.product-card[data-cat="manovacuometros"] .product-card__category{color:var(--cat-manovac)}
+.product-card[data-cat="vacuometros"] .product-card__category{color:var(--cat-vac)}
+.product-card[data-cat="termometros"] .product-card__category{color:var(--cat-temp)}
 .product-card__name{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--slate-900);line-height:1.3;margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .product-card__specs{display:block;font-family:var(--font-mono);font-size:.75rem;color:var(--slate-400);margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .product-card__cta{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;width:100%;padding:12px 16px;background:var(--whatsapp);color:#fff;font-family:var(--font-body);font-size:.8rem;font-weight:600;border-radius:10px;transition:all .25s}
@@ -325,6 +346,13 @@ button{border:none;cursor:pointer;background:none;font-family:inherit}
 .chip:hover{border-color:var(--electric-blue);color:var(--electric-blue)}
 .chip--active{background:var(--electric-blue);border-color:var(--electric-blue);color:#fff}
 .chip--active:hover{background:var(--electric-blue-hover);color:#fff}
+/* chip de categoria ativo herda o acento da categoria (Design System) */
+[data-filter="categoria"] .chip[data-value="manovacuometros"]:hover{border-color:var(--cat-manovac);color:var(--cat-manovac)}
+[data-filter="categoria"] .chip--active[data-value="manovacuometros"]{background:var(--cat-manovac);border-color:var(--cat-manovac);color:#0A1628}
+[data-filter="categoria"] .chip[data-value="vacuometros"]:hover{border-color:var(--cat-vac);color:var(--cat-vac)}
+[data-filter="categoria"] .chip--active[data-value="vacuometros"]{background:var(--cat-vac);border-color:var(--cat-vac);color:#fff}
+[data-filter="categoria"] .chip[data-value="termometros"]:hover{border-color:var(--cat-temp);color:var(--cat-temp)}
+[data-filter="categoria"] .chip--active[data-value="termometros"]{background:var(--cat-temp);border-color:var(--cat-temp);color:#1a1a1a}
 .catalog-search{flex:1;min-width:200px;padding:9px 16px;background:#fff;border:1px solid var(--slate-200);border-radius:10px;font-family:var(--font-body);font-size:.85rem;color:var(--slate-900);outline:none;transition:border-color .2s}
 .catalog-search:focus{border-color:var(--electric-blue);box-shadow:0 0 0 3px rgba(0,120,212,.1)}
 .catalog-filters__summary{display:flex;justify-content:space-between;align-items:center;padding-top:8px;border-top:1px dashed var(--slate-200)}
@@ -364,9 +392,14 @@ button{border:none;cursor:pointer;background:none;font-family:inherit}
 .ds-modal__category{font-family:var(--font-mono);font-size:.7rem;font-weight:500;color:var(--electric-blue);text-transform:uppercase;letter-spacing:.12em}
 .ds-modal__title{font-family:var(--font-display);font-weight:700;font-size:1.4rem;color:var(--slate-900);line-height:1.25;margin-top:6px;letter-spacing:-.02em}
 .ds-modal__specs{display:grid;grid-template-columns:1fr;gap:0;margin-top:20px;border:1px solid var(--slate-200);border-radius:12px;overflow:hidden}
-.ds-modal__specs div{display:grid;grid-template-columns:140px 1fr;align-items:start;padding:10px 16px;border-bottom:1px solid var(--slate-200);font-size:.82rem}
+.ds-modal__specs div{display:grid;grid-template-columns:22px 130px 1fr;gap:10px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--slate-200);font-size:.82rem}
 .ds-modal__specs div:last-child{border-bottom:0}
 .ds-modal__specs div:nth-child(even){background:var(--slate-50)}
+.ds-modal__specs svg{width:18px;height:18px;color:var(--electric-blue)}
+.ds-modal__content[data-cat="manometros"] .ds-modal__specs svg,.ds-modal__content[data-cat="manometros"] .ds-modal__category{color:var(--cat-mano)}
+.ds-modal__content[data-cat="manovacuometros"] .ds-modal__specs svg,.ds-modal__content[data-cat="manovacuometros"] .ds-modal__category{color:var(--cat-manovac)}
+.ds-modal__content[data-cat="vacuometros"] .ds-modal__specs svg,.ds-modal__content[data-cat="vacuometros"] .ds-modal__category{color:var(--cat-vac)}
+.ds-modal__content[data-cat="termometros"] .ds-modal__specs svg,.ds-modal__content[data-cat="termometros"] .ds-modal__category{color:var(--cat-temp)}
 .ds-modal__specs dt{font-family:var(--font-body);font-weight:600;color:var(--slate-600);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
 .ds-modal__specs dd{font-family:var(--font-body);font-weight:500;color:var(--slate-900);line-height:1.4}
 .ds-modal__application{margin-top:20px;padding:14px 16px;background:rgba(0,180,216,.06);border:1px solid rgba(0,180,216,.18);border-radius:10px}
@@ -490,7 +523,8 @@ button{border:none;cursor:pointer;background:none;font-family:inherit}
   .ds-modal__photo img{max-height:24vh}
   .ds-modal__body{padding:20px 16px}
   .ds-modal__title{font-size:1.15rem}
-  .ds-modal__specs div{grid-template-columns:1fr;gap:2px;padding:10px 14px}
+  .ds-modal__specs div{grid-template-columns:20px 1fr;gap:4px 8px;padding:10px 14px}
+  .ds-modal__specs svg{grid-row:span 2}
   .ds-modal__specs dt{font-size:.68rem}
   .ds-modal__specs dd{font-size:.85rem}
   .ds-modal__close{top:10px;right:12px}

@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catálogo Completo — Press Control</title>
   <meta name="description" content="Catálogo completo de manômetros, manovacuômetros, vacuômetros e termômetros industriais com ficha técnica e pronta entrega.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <meta name="theme-color" content="#0A1628">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
     /* Critical CSS — above-the-fold */
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    :root{--navy:#0A1628;--navy-light:#152238;--steel-blue:#1E3A5F;--electric-blue:#0078D4;--electric-blue-hover:#0063b1;--cyan:#00B4D8;--slate-50:#F8FAFC;--slate-200:#E2E8F0;--slate-400:#94A3B8;--slate-600:#475569;--slate-900:#0F172A;--whatsapp:#25D366;--font-display:'Plus Jakarta Sans',system-ui,sans-serif;--font-body:'DM Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace}
+    :root{--navy:#0A1628;--navy-light:#152238;--steel-blue:#1E3A5F;--electric-blue:#0078D4;--electric-blue-hover:#0063b1;--cyan:#00B4D8;--cat-mano:#0078D4;--cat-manovac:#00B4D8;--cat-vac:#7C3AED;--cat-temp:#F59E0B;--slate-50:#F8FAFC;--slate-200:#E2E8F0;--slate-400:#94A3B8;--slate-600:#475569;--slate-900:#0F172A;--whatsapp:#25D366;--font-display:'Plus Jakarta Sans',system-ui,sans-serif;--font-body:'DM Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace}
     html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
     body{font-family:var(--font-body);color:var(--slate-900);background:var(--slate-50);line-height:1.6;overflow-x:hidden;padding-top:40px}
     a{text-decoration:none;color:inherit}button{border:none;cursor:pointer;background:none;font-family:inherit}
@@ -300,7 +303,7 @@
           : `<svg viewBox="0 0 80 80" width="60" fill="none" stroke="#94A3B8" stroke-width="1.5" opacity=".25"><circle cx="40" cy="42" r="30"/><line x1="40" y1="42" x2="52" y2="28"/><circle cx="40" cy="42" r="3"/></svg>`;
         const back = hasBack ? `<img src="${p.imagem_verso}" alt="${p.nome} (verso)" loading="lazy">` : '';
         return `
-          <article class="product-card${flippable ? ' product-card--flippable' : ''}" data-id="${p.id}">
+          <article class="product-card${flippable ? ' product-card--flippable' : ''}" data-id="${p.id}" data-cat="${p.categoria}">
             ${badgeFor(p)}
             <button class="product-card__image product-card__image--btn" type="button" data-action="datasheet" data-id="${p.id}" aria-label="Ver ficha técnica">
               <div class="product-card__flip">

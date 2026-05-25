@@ -1,2 +1,7 @@
 # Local Netlify folder
 .netlify
+
+# Artefatos de processamento de imagem (não-prod)
+tools/_clean/
+tools/_orig/
+tools/_review/

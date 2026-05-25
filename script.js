@@ -23,6 +23,27 @@ const SPEC_LABELS = [
   ['capilar', 'Capilar'],
 ];
 
+/* Ícones de especificação (vocabulário do Design System Press Control).
+   stroke 2px, viewBox 24×24, cor herdada. */
+const SPEC_ICONS = {
+  material: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><line x1="4" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="20" y2="12"/>',
+  sensor: '<path d="M4 18 C 4 10 10 4 14 4 C 18 4 20 6 20 9 C 20 12 17 14 14 12"/><circle cx="4" cy="18" r="1.5" fill="currentColor"/>',
+  diametro: '<circle cx="12" cy="12" r="8"/><line x1="4" y1="12" x2="20" y2="12"/><polyline points="6 10 4 12 6 14"/><polyline points="18 10 20 12 18 14"/>',
+  visor: '<rect x="4" y="6" width="16" height="12" rx="2"/><line x1="4" y1="10" x2="20" y2="10"/>',
+  classe: '<path d="M12 3 L20 6 V12 C20 17 16 20 12 21 C8 20 4 17 4 12 V6 Z"/><path d="M9 12 L11 14 L15 10"/>',
+  conexao: '<rect x="3" y="10" width="6" height="4"/><rect x="13" y="9" width="3" height="6"/><line x1="9" y1="12" x2="13" y2="12"/><line x1="16" y1="12" x2="21" y2="12"/>',
+  escalas: '<path d="M4 16 A 8 8 0 0 1 20 16"/><line x1="12" y1="16" x2="16" y2="10"/><circle cx="12" cy="16" r="1.5" fill="currentColor"/>',
+  ponteiro: '<circle cx="12" cy="12" r="8"/><line x1="12" y1="12" x2="16" y2="8"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/>',
+  temperatura: '<path d="M10 4a2 2 0 0 1 4 0v10.5a4 4 0 1 1-4 0z"/><line x1="12" y1="8" x2="12" y2="14"/>',
+  haste: '<line x1="12" y1="3" x2="12" y2="16"/><rect x="9" y="16" width="6" height="5"/>',
+  faixa_temperatura: '<path d="M4 16 A 8 8 0 0 1 20 16"/><line x1="12" y1="16" x2="16" y2="10"/><circle cx="12" cy="16" r="1.5" fill="currentColor"/>',
+  capilar: '<path d="M3 12 C 6 8 6 16 9 12 S 12 8 15 12 18 16 21 12"/>',
+};
+const SPEC_ICON_FALLBACK = '<circle cx="12" cy="12" r="8"/><path d="M9 12 h6 M12 9 v6"/>';
+function specIcon(key) {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SPEC_ICONS[key] || SPEC_ICON_FALLBACK}</svg>`;
+}
+
 // Produtos carregados via fetch (catalogo.html); index.html não precisa do array completo
 let productMap = {};
 
@@ -121,6 +142,7 @@ const dsState = {
     const modal = document.getElementById('dsModal');
     if (!modal || !product) return;
     document.getElementById('dsCategory').textContent = CAT_LABEL[product.categoria] || product.categoria;
+    modal.querySelector('.ds-modal__content').setAttribute('data-cat', product.categoria || '');
     document.getElementById('dsTitle').textContent = product.nome;
     const gallery = document.getElementById('dsGallery');
     if (gallery) {
@@ -136,7 +158,7 @@ const dsState = {
     const specsEl = document.getElementById('dsSpecs');
     specsEl.innerHTML = SPEC_LABELS
       .filter(([k]) => product.specs && product.specs[k])
-      .map(([k, label]) => `<div><dt>${label}</dt><dd>${product.specs[k]}</dd></div>`)
+      .map(([k, label]) => `<div>${specIcon(k)}<dt>${label}</dt><dd>${product.specs[k]}</dd></div>`)
       .join('');
     document.getElementById('dsApplication').textContent = product.aplicacao || 'Consulte nossos especialistas para detalhes da aplicação.';
 

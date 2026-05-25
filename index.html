@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Press Control — Instrumentação Industrial</title>
   <meta name="description" content="Manômetros, manovacuômetros, vacuômetros e termômetros industriais com pronta entrega. Personalização com sua logo. Envio para todo Brasil.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <meta name="theme-color" content="#FFFFFF">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
     /* Critical CSS — above-the-fold */
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    :root{--navy:#0A1628;--navy-light:#152238;--steel-blue:#1E3A5F;--electric-blue:#0078D4;--electric-blue-hover:#0063b1;--cyan:#00B4D8;--slate-50:#F8FAFC;--slate-200:#E2E8F0;--slate-300:#CBD5E1;--slate-400:#94A3B8;--slate-600:#475569;--slate-900:#0F172A;--whatsapp:#25D366;--whatsapp-dark:#1DA851;--font-display:'Plus Jakarta Sans',system-ui,sans-serif;--font-body:'DM Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace}
+    :root{--navy:#0A1628;--navy-light:#152238;--steel-blue:#1E3A5F;--electric-blue:#0078D4;--electric-blue-hover:#0063b1;--cyan:#00B4D8;--paper:#FAFAF7;--paper-warm:#F4F2EC;--slate-50:#F8FAFC;--slate-100:#F1F5F9;--slate-200:#E2E8F0;--slate-300:#CBD5E1;--slate-400:#94A3B8;--slate-600:#475569;--slate-700:#334155;--slate-900:#0F172A;--whatsapp:#25D366;--whatsapp-dark:#1DA851;--font-display:'Plus Jakarta Sans',system-ui,sans-serif;--font-body:'DM Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace}
     html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
     body{font-family:var(--font-body);color:var(--slate-900);background:var(--slate-50);line-height:1.6;overflow-x:hidden;padding-top:40px}
     a{text-decoration:none;color:inherit}button{border:none;cursor:pointer;background:none;font-family:inherit}
@@ -47,98 +50,212 @@
     .whatsapp-float{position:fixed;bottom:24px;right:24px;z-index:999;width:60px;height:60px;background:var(--whatsapp);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4)}
     @media(max-width:1024px){.navbar__links{display:none}.navbar__toggle{display:inline-flex;align-items:center;justify-content:center}.navbar__cta{display:none}.hero__container{grid-template-columns:1.2fr 1fr;gap:32px}}
     @media(max-width:768px){.topbar{display:none}.navbar{position:fixed;top:0;left:0;right:0;z-index:1001;margin-top:0}body{padding-top:64px}.navbar__container{height:64px;padding:0 16px}.pc-logo .pc-wordmark{font-size:1.1rem}.pc-logo .pc-mark{width:28px;height:28px}.hero{min-height:auto;padding:32px 0 40px}.hero__container{grid-template-columns:1fr;text-align:center;gap:24px;padding:0 20px}.hero__content{padding:8px 0 0;text-align:center;order:1}.hero__visual{order:2}.hero__mark-wrap{max-width:280px}.hero__mark{max-width:240px}.hero__sub{margin:0 auto 20px;font-size:.92rem}.hero__actions{justify-content:center}.hero__headline{font-size:clamp(1.9rem,8vw,2.6rem);margin-bottom:18px}.whatsapp-float{bottom:16px;right:16px;width:52px;height:52px}}
+
+    /* ───────── TOPO LIGHT (header + hero + stats) — fundo cinza ───────── */
+    body.home-light{background:var(--slate-50);color:var(--navy);padding-top:0}
+    .site-top .header{background:rgba(255,255,255,.85);padding:16px 40px;position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--slate-200);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+    .site-top .header__inner{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px}
+    .site-top .brand{display:flex;align-items:center;gap:12px}
+    .site-top .brand__mark{display:flex;align-items:center;width:42px;height:42px;color:var(--navy)}
+    .site-top .brand__name{font-family:var(--font-display);font-weight:800;font-size:22px;letter-spacing:-.028em;color:var(--navy)}
+    .site-top .brand__name em{color:var(--electric-blue);font-style:normal;font-weight:700}
+    .site-top .nav{display:flex;align-items:center;gap:6px}
+    .site-top .nav a{padding:8px 16px;font-size:14px;font-weight:500;color:var(--slate-700);border-radius:8px;transition:background .18s,color .18s}
+    .site-top .nav a:hover{color:var(--navy);background:var(--slate-100)}
+    .site-top .header__cta{display:flex;align-items:center;gap:14px}
+    .site-top .btn-wpp{display:inline-flex;align-items:center;gap:9px;background:var(--whatsapp);color:#fff;font-weight:700;font-size:14px;padding:11px 22px;border-radius:100px;transition:transform .2s,box-shadow .2s,background .2s;box-shadow:0 4px 16px rgba(37,211,102,.22)}
+    .site-top .btn-wpp:hover{background:var(--whatsapp-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,211,102,.32)}
+    .site-top .btn-wpp svg{width:16px;height:16px}
+    .site-top .navbar__toggle{display:none;color:var(--navy);padding:8px;background:transparent;border:0;border-radius:8px}
+    .site-top .hero{position:relative;min-height:auto;display:block;background:radial-gradient(ellipse at 50% 0%,#fff 0%,var(--slate-50) 50%,var(--slate-100) 100%);overflow:hidden;padding:88px 40px 96px}
+    .site-top .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 78% 38%,rgba(0,180,216,.10),transparent 55%);pointer-events:none}
+    .site-top .hero__inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;position:relative;z-index:1}
+    .site-top .hero__eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric-blue);margin-bottom:24px;background:rgba(0,120,212,.08);border:1px solid rgba(0,120,212,.18);padding:8px 16px;border-radius:100px}
+    .site-top .hero__eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--electric-blue);box-shadow:0 0 0 4px rgba(0,120,212,.18)}
+    .site-top .hero__title{font-family:var(--font-display);font-weight:800;font-size:clamp(2.8rem,5vw,4.4rem);line-height:1.02;letter-spacing:-.038em;color:var(--navy);margin-bottom:24px}
+    .site-top .hero__title em{font-style:normal;color:var(--electric-blue);display:inline-block}
+    .site-top .hero__sub{font-size:1.1rem;color:var(--slate-700);line-height:1.6;max-width:520px;margin-bottom:38px}
+    .site-top .hero__sub strong{color:var(--navy);font-weight:600}
+    .site-top .hero__ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:42px}
+    .site-top .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;font-family:var(--font-body);font-weight:600;font-size:15px;border-radius:10px;transition:transform .2s,box-shadow .2s,background .2s;letter-spacing:.005em;border:none;cursor:pointer}
+    .site-top .btn--primary{background:var(--electric-blue);color:#fff;box-shadow:0 4px 16px rgba(0,120,212,.25)}
+    .site-top .btn--primary:hover{background:var(--electric-blue-hover);transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,120,212,.35)}
+    .site-top .btn--wpp{background:#fff;color:var(--navy);border:1px solid var(--slate-200)}
+    .site-top .btn--wpp:hover{background:var(--whatsapp);border-color:var(--whatsapp);color:#fff;transform:translateY(-1px)}
+    .site-top .btn--wpp svg{color:var(--whatsapp);transition:color .2s}
+    .site-top .btn--wpp:hover svg{color:#fff}
+    .site-top .btn svg{width:18px;height:18px}
+    .site-top .hero__notes{display:flex;gap:10px;flex-wrap:wrap;padding-top:32px;border-top:1px dashed var(--slate-300)}
+    .site-top .hero__note{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--navy);background:#fff;border:1px solid var(--slate-200);padding:9px 14px;border-radius:100px;box-shadow:0 1px 2px rgba(10,22,40,.04);transition:border-color .2s,transform .2s}
+    .site-top .hero__note:hover{border-color:var(--electric-blue);transform:translateY(-1px)}
+    .site-top .hero__note svg{color:var(--success,#10B981);width:14px;height:14px;stroke-width:3}
+    .site-top .hero__visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:560px;animation:none}
+    .site-top .hero__mark{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;color:var(--navy);filter:none;width:auto;max-width:none}
+    .site-top .hero__mark svg.aperture{width:420px;height:420px;filter:drop-shadow(0 24px 50px rgba(10,22,40,.12))}
+    .site-top .hero__halo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;pointer-events:none}
+    .site-top .hero__halo::before{content:'';width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(0,180,216,.16),transparent 65%);filter:blur(50px)}
+    .site-top .hero__arcs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:0;pointer-events:none;opacity:.55}
+    .site-top .hero__arcs svg{width:640px;height:640px}
+    .site-top .stats{background:var(--slate-100);padding:64px 40px;border-bottom:1px solid var(--slate-200)}
+    .site-top .stats__inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .site-top .stat{background:#fff;border:1px solid var(--slate-200);border-radius:14px;padding:32px;display:flex;flex-direction:column;gap:8px;transition:border-color .2s,transform .2s,box-shadow .2s}
+    .site-top .stat:hover{border-color:var(--electric-blue);transform:translateY(-2px);box-shadow:0 12px 32px rgba(10,22,40,.06)}
+    .site-top .stat__icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(0,120,212,.08);border-radius:10px;color:var(--electric-blue);margin-bottom:6px}
+    .site-top .stat__num{font-family:var(--font-display);font-weight:800;font-size:2.5rem;line-height:1;letter-spacing:-.04em;color:var(--navy);display:flex;align-items:baseline;gap:4px}
+    .site-top .stat__num span{color:var(--electric-blue);font-size:.55em;font-weight:700;letter-spacing:0}
+    .site-top .stat__label{font-size:.95rem;color:var(--slate-700);font-weight:500;margin-top:4px}
+    .site-top .stat__hint{font-size:.82rem;color:var(--slate-700);font-weight:500;line-height:1.45;margin-top:auto;padding-top:14px;border-top:1px dashed var(--slate-300)}
+    @media(max-width:1100px){
+      .site-top .nav,.site-top .header__cta{display:none}
+      .site-top .navbar__toggle{display:inline-flex;align-items:center;justify-content:center}
+      .site-top .header{padding:14px 20px}
+      .site-top .hero{padding:48px 20px 56px}
+      .site-top .hero__inner{grid-template-columns:1fr;gap:36px}
+      .site-top .hero__visual{min-height:300px;order:-1}
+      .site-top .hero__mark svg.aperture{width:260px;height:260px}
+      .site-top .hero__arcs svg{width:400px;height:400px}
+      .site-top .hero__halo::before{width:300px;height:300px}
+      .site-top .stats__inner{grid-template-columns:1fr;gap:16px}
+      .site-top .stats{padding:40px 20px}
+    }
   </style>
   <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="style.css"></noscript>
   <script src="script.js" defer></script>
 </head>
-<body>
+<body class="home-light">
 
-  <!-- TOPBAR — Diferenciais Fixos -->
-  <div class="topbar">
-    <div class="topbar__container">
-      <div class="topbar__item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="9"/><path d="M12 4V2"/><line x1="12" y1="13" x2="15.5" y2="8.5"/><circle cx="12" cy="13" r="1.5" fill="var(--cyan)"/></svg> Personalização com Sua Logo</div>
-      <div class="topbar__item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10V8l-9-5-9 5v8l9 5 9-5v-2"/><path d="M3 8l9 5 9-5"/><line x1="12" y1="13" x2="12" y2="21"/><polyline points="15 13 17 15 22 10"/></svg> Pronta Entrega</div>
-      <div class="topbar__item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13V9a6 6 0 0 1 12 0v4"/><path d="M4 13h2v4H4a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1z"/><path d="M18 13h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2z"/><path d="M6 9h12"/></svg> Consultores Especializados</div>
-      <div class="topbar__item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="4" rx="1"/><path d="M6 10v8M14 10v8M6 18h8M10 6V3M10 3h5M15 3v3"/><line x1="9" y1="14" x2="11" y2="14"/></svg> Tecnologia em Medição</div>
-      <div class="topbar__item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="13" x="6" y="4.5" rx="2"/><path d="M2 7.5h4M2 11.5h4M2 15.5h4"/></svg> Envio para Todo Brasil</div>
-      <div class="topbar__item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> Frete Grátis MG acima R$300</div>
-    </div>
-  </div>
+  <!-- ===== Símbolo Aperture reutilizável ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="aperture" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="3.5"/>
+      <g stroke="currentColor" stroke-linecap="round">
+        <line x1="50" y1="10" x2="50" y2="20" stroke-width="2.4"/>
+        <line x1="50" y1="80" x2="50" y2="90" stroke-width="2.4"/>
+        <line x1="10" y1="50" x2="20" y2="50" stroke-width="2.4"/>
+        <line x1="80" y1="50" x2="90" y2="50" stroke-width="2.4"/>
+        <line x1="22" y1="22" x2="27" y2="27" stroke-width="1.4" stroke-opacity=".85"/>
+        <line x1="73" y1="73" x2="78" y2="78" stroke-width="1.4" stroke-opacity=".85"/>
+        <line x1="78" y1="22" x2="73" y2="27" stroke-width="1.4" stroke-opacity=".85"/>
+        <line x1="22" y1="78" x2="27" y2="73" stroke-width="1.4" stroke-opacity=".85"/>
+        <line x1="15" y1="32" x2="20" y2="34" stroke-width="1.4" stroke-opacity=".5"/>
+        <line x1="32" y1="15" x2="34" y2="20" stroke-width="1.4" stroke-opacity=".5"/>
+        <line x1="66" y1="15" x2="68" y2="20" stroke-width="1.4" stroke-opacity=".5"/>
+        <line x1="80" y1="32" x2="85" y2="34" stroke-width="1.4" stroke-opacity=".5"/>
+        <line x1="80" y1="68" x2="85" y2="66" stroke-width="1.4" stroke-opacity=".5"/>
+        <line x1="66" y1="85" x2="68" y2="80" stroke-width="1.4" stroke-opacity=".5"/>
+        <line x1="32" y1="85" x2="34" y2="80" stroke-width="1.4" stroke-opacity=".5"/>
+        <line x1="15" y1="68" x2="20" y2="66" stroke-width="1.4" stroke-opacity=".5"/>
+      </g>
+      <line x1="44" y1="56" x2="74" y2="36" stroke="#00B4D8" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="50" cy="50" r="4" fill="currentColor"/>
+      <circle cx="50" cy="50" r="1.6" fill="#F8FAFC"/>
+    </symbol>
+  </defs></svg>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="navbar__container">
-      <a href="#" class="pc-logo navbar__logo"><svg class="pc-mark" width="32" height="32" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" fill="none"><circle cx="50" cy="50" r="46" stroke-width="3.5"/><g stroke-linecap="round"><line x1="50" y1="20" x2="50" y2="10" stroke-width="2.4"/><line x1="59.06" y1="16.19" x2="60.35" y2="11.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="67.5" y1="19.69" x2="70" y2="15.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="73.33" y1="26.67" x2="78.28" y2="21.72" stroke-width="1.4" stroke-opacity=".85"/><line x1="80.31" y1="32.5" x2="84.64" y2="30" stroke-width="1.4" stroke-opacity=".45"/><line x1="83.81" y1="40.94" x2="88.64" y2="39.65" stroke-width="1.4" stroke-opacity=".45"/><line x1="80" y1="50" x2="90" y2="50" stroke-width="2.4"/><line x1="83.81" y1="59.06" x2="88.64" y2="60.35" stroke-width="1.4" stroke-opacity=".45"/><line x1="80.31" y1="67.5" x2="84.64" y2="70" stroke-width="1.4" stroke-opacity=".45"/><line x1="73.33" y1="73.33" x2="78.28" y2="78.28" stroke-width="1.4" stroke-opacity=".85"/><line x1="67.5" y1="80.31" x2="70" y2="84.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="59.06" y1="83.81" x2="60.35" y2="88.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="50" y1="80" x2="50" y2="90" stroke-width="2.4"/><line x1="40.94" y1="83.81" x2="39.65" y2="88.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="32.5" y1="80.31" x2="30" y2="84.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="26.67" y1="73.33" x2="21.72" y2="78.28" stroke-width="1.4" stroke-opacity=".85"/><line x1="19.69" y1="67.5" x2="15.36" y2="70" stroke-width="1.4" stroke-opacity=".45"/><line x1="16.19" y1="59.06" x2="11.36" y2="60.35" stroke-width="1.4" stroke-opacity=".45"/><line x1="20" y1="50" x2="10" y2="50" stroke-width="2.4"/><line x1="16.19" y1="40.94" x2="11.36" y2="39.65" stroke-width="1.4" stroke-opacity=".45"/><line x1="19.69" y1="32.5" x2="15.36" y2="30" stroke-width="1.4" stroke-opacity=".45"/><line x1="26.67" y1="26.67" x2="21.72" y2="21.72" stroke-width="1.4" stroke-opacity=".85"/><line x1="32.5" y1="19.69" x2="30" y2="15.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="40.94" y1="16.19" x2="39.65" y2="11.36" stroke-width="1.4" stroke-opacity=".45"/></g><line class="pc-mark__needle" x1="44.8" y1="53" x2="74.25" y2="36" stroke-width="4" stroke-linecap="round"/></g><circle cx="50" cy="50" r="4" fill="currentColor"/><circle cx="50" cy="50" r="1.6" fill="#F8FAFC"/></svg><span class="pc-wordmark">Press Control</span></a>
-      <div class="navbar__links">
+  <div class="site-top">
+
+  <!-- HEADER (light, sticky) -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="index.html" class="brand">
+        <span class="brand__mark"><svg width="42" height="42"><use href="#aperture"/></svg></span>
+        <span class="brand__name">Press<em>Control</em></span>
+      </a>
+      <nav class="nav">
         <a href="catalogo.html?categoria=manometros">Manômetros</a>
         <a href="catalogo.html?categoria=vacuometros">Vacuômetros</a>
         <a href="catalogo.html?categoria=manovacuometros">Manovacuômetros</a>
         <a href="catalogo.html?categoria=termometros">Termômetros</a>
         <a href="catalogo.html">Catálogo</a>
         <a href="#sobre">Sobre</a>
+      </nav>
+      <div class="header__cta">
+        <button class="btn-wpp wa-btn" data-msg="preciso de ajuda" type="button">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 0 0 .603.603l5.822-1.458A11.948 11.948 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          Fale Conosco
+        </button>
       </div>
       <button class="navbar__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
       </button>
-      <button class="navbar__cta wa-btn" data-msg="preciso de ajuda" type="button">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 00.603.603l5.822-1.458A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.82 0-3.543-.476-5.036-1.308l-.352-.206-3.65.914.914-3.65-.206-.352A9.96 9.96 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-        Fale Conosco
-      </button>
     </div>
-  </nav>
+  </header>
 
-  <!-- HERO -->
+  <!-- HERO (light) -->
   <section class="hero">
-    <div class="hero__noise"></div>
-    <div class="hero__container">
-      <div class="hero__content">
-        <h1 class="hero__headline">Manômetros e<br><span class="hero__headline-accent">Instrumentação</span><br>Industrial</h1>
-        <p class="hero__sub">Catálogo completo com fichas técnicas, atendimento especializado, <strong class="hero__sub-highlight">personalização com Sua Logo</strong> e <strong class="hero__sub-highlight">envio rápido para todo Brasil.</strong></p>
-        <div class="hero__actions">
-          <a href="catalogo.html" class="btn btn--primary">Ver Catálogo Completo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-          <button class="btn btn--whatsapp wa-btn" data-msg="preciso de ajuda" type="button"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 00.603.603l5.822-1.458A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.82 0-3.543-.476-5.036-1.308l-.352-.206-3.65.914.914-3.65-.206-.352A9.96 9.96 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg> Falar com Especialista</button>
+    <div class="hero__inner">
+      <div class="hero__left">
+        <div class="hero__eyebrow">Instrumentação Industrial · Catálogo 2026</div>
+        <h1 class="hero__title">Manômetros<br>com <em>sua marca</em><br>no mostrador.</h1>
+        <p class="hero__sub">Catálogo completo de manômetros, manovacuômetros, vacuômetros e termômetros industriais. <strong>Personalização com sua logo</strong>, pronta entrega e envio rápido para todo Brasil.</p>
+        <div class="hero__ctas">
+          <a href="catalogo.html" class="btn btn--primary">
+            Ver Catálogo Completo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <button class="btn btn--wpp wa-btn" data-msg="preciso de ajuda" type="button">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 0 0 .603.603l5.822-1.458A11.948 11.948 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+            Falar com Especialista
+          </button>
+        </div>
+        <div class="hero__notes">
+          <span class="hero__note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Envio em 24h</span>
+          <span class="hero__note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> NF-e Automática</span>
+          <span class="hero__note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Frete Grátis MG · acima R$300</span>
         </div>
       </div>
       <div class="hero__visual">
-        <div class="hero__mark-wrap">
-          <svg class="pc-mark hero__mark" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" fill="none"><circle cx="50" cy="50" r="46" stroke-width="3.5"/><g stroke-linecap="round"><line x1="50" y1="20" x2="50" y2="10" stroke-width="2.4"/><line x1="59.06" y1="16.19" x2="60.35" y2="11.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="67.5" y1="19.69" x2="70" y2="15.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="73.33" y1="26.67" x2="78.28" y2="21.72" stroke-width="1.4" stroke-opacity=".85"/><line x1="80.31" y1="32.5" x2="84.64" y2="30" stroke-width="1.4" stroke-opacity=".45"/><line x1="83.81" y1="40.94" x2="88.64" y2="39.65" stroke-width="1.4" stroke-opacity=".45"/><line x1="80" y1="50" x2="90" y2="50" stroke-width="2.4"/><line x1="83.81" y1="59.06" x2="88.64" y2="60.35" stroke-width="1.4" stroke-opacity=".45"/><line x1="80.31" y1="67.5" x2="84.64" y2="70" stroke-width="1.4" stroke-opacity=".45"/><line x1="73.33" y1="73.33" x2="78.28" y2="78.28" stroke-width="1.4" stroke-opacity=".85"/><line x1="67.5" y1="80.31" x2="70" y2="84.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="59.06" y1="83.81" x2="60.35" y2="88.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="50" y1="80" x2="50" y2="90" stroke-width="2.4"/><line x1="40.94" y1="83.81" x2="39.65" y2="88.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="32.5" y1="80.31" x2="30" y2="84.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="26.67" y1="73.33" x2="21.72" y2="78.28" stroke-width="1.4" stroke-opacity=".85"/><line x1="19.69" y1="67.5" x2="15.36" y2="70" stroke-width="1.4" stroke-opacity=".45"/><line x1="16.19" y1="59.06" x2="11.36" y2="60.35" stroke-width="1.4" stroke-opacity=".45"/><line x1="20" y1="50" x2="10" y2="50" stroke-width="2.4"/><line x1="16.19" y1="40.94" x2="11.36" y2="39.65" stroke-width="1.4" stroke-opacity=".45"/><line x1="19.69" y1="32.5" x2="15.36" y2="30" stroke-width="1.4" stroke-opacity=".45"/><line x1="26.67" y1="26.67" x2="21.72" y2="21.72" stroke-width="1.4" stroke-opacity=".85"/><line x1="32.5" y1="19.69" x2="30" y2="15.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="40.94" y1="16.19" x2="39.65" y2="11.36" stroke-width="1.4" stroke-opacity=".45"/></g><line class="pc-mark__needle" x1="44.8" y1="53" x2="74.25" y2="36" stroke-width="4" stroke-linecap="round"/></g><circle cx="50" cy="50" r="4" fill="currentColor"/><circle cx="50" cy="50" r="1.6" fill="#F8FAFC"/></svg>
+        <div class="hero__arcs">
+          <svg viewBox="0 0 600 600" fill="none" stroke="#94A3B8" stroke-width="1">
+            <circle cx="300" cy="300" r="290" stroke-opacity=".4"/>
+            <circle cx="300" cy="300" r="230" stroke-dasharray="2 8" stroke-opacity=".5"/>
+            <circle cx="300" cy="300" r="170" stroke-opacity=".35"/>
+          </svg>
+        </div>
+        <div class="hero__halo"></div>
+        <div class="hero__mark">
+          <svg class="aperture" viewBox="0 0 100 100"><use href="#aperture"/></svg>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TRUST BAR -->
-  <section class="trust-bar">
-    <div class="trust-bar__container">
-      <div class="trust-bar__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0078D4" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg><span>Pronta Entrega</span></div>
-      <div class="trust-bar__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0078D4" stroke-width="2.2"><rect width="16" height="13" x="6" y="4.5" rx="2"/><path d="M2 7.5h4M2 11.5h4M2 15.5h4"/></svg><span>Envio Todo Brasil</span></div>
-      <div class="trust-bar__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0078D4" stroke-width="2.2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg><span>NF-e Automática</span></div>
-      <div class="trust-bar__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0078D4" stroke-width="2.2"><circle cx="12" cy="13" r="9"/><line x1="12" y1="13" x2="15.5" y2="8.5"/><circle cx="12" cy="13" r="1.5" fill="#0078D4"/><rect x="9" y="16" width="6" height="3" rx=".8"/></svg><span>Personalização</span></div>
-      <div class="trust-bar__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0078D4" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg><span>Suporte Técnico</span></div>
+  <!-- STATS (3 cards) -->
+  <section class="stats">
+    <div class="stats__inner">
+      <div class="stat">
+        <div class="stat__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+        <div class="stat__num">5.000<span>+</span></div>
+        <div class="stat__label">Produtos em estoque</div>
+        <div class="stat__hint">4 categorias · linhas DSIT · DSC · DSI · DSA · NH3</div>
+      </div>
+      <div class="stat">
+        <div class="stat__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="stat__num">24<span>h</span></div>
+        <div class="stat__label">Envio para todo Brasil</div>
+        <div class="stat__hint">Pedidos confirmados antes das 14h · postagem mesmo dia</div>
+      </div>
+      <div class="stat">
+        <div class="stat__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12 h 6 M 12 9 v 6"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/></svg></div>
+        <div class="stat__num">100<span>%</span></div>
+        <div class="stat__label">Personalizável com sua logo</div>
+        <div class="stat__hint">Logo do cliente impressa na escala do mostrador</div>
+      </div>
     </div>
   </section>
 
-  <!-- STATS BAR -->
-  <section class="stats-bar">
-    <div class="stats-bar__container">
-      <div class="stats-bar__item"><span class="stats-bar__number">5.000+</span><span class="stats-bar__label">Produtos em estoque</span></div>
-      <div class="stats-bar__divider"></div>
-      <div class="stats-bar__item"><span class="stats-bar__number">24h</span><span class="stats-bar__label">Envio para todo Brasil</span></div>
-      <div class="stats-bar__divider"></div>
-      <div class="stats-bar__item"><span class="stats-bar__number">MG</span><span class="stats-bar__label">Frete grátis acima R$300</span></div>
-    </div>
-  </section>
+  </div><!-- /.site-top -->
 
   <!-- CATEGORIAS -->
   <section class="categories" id="categorias"><div class="categories__container">
     <span class="section-label">Explore por Categoria</span>
     <h2 class="section-title">Encontre o instrumento certo <span class="section-title--accent">para sua operação</span></h2>
     <div class="categories__grid">
-      <a href="catalogo.html?categoria=manometros" class="cat-card cat-card--main"><svg class="cat-card__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="9"/><path d="M12 4V2"/><line x1="12" y1="13" x2="15.5" y2="8.5"/><circle cx="12" cy="13" r="1.5" fill="currentColor"/></svg><h3 class="cat-card__name">Manômetros</h3><p class="cat-card__desc">Medição de pressão com máxima exatidão para as mais diversas aplicações industriais.</p><span class="cat-card__link">Ver Produtos →</span></a>
-      <a href="catalogo.html?categoria=manovacuometros" class="cat-card"><svg class="cat-card__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg><h3 class="cat-card__name">Manovacuômetros</h3><p class="cat-card__desc">Pressão e vácuo em um único instrumento.</p><span class="cat-card__link">Ver Produtos →</span></a>
-      <a href="catalogo.html?categoria=vacuometros" class="cat-card"><svg class="cat-card__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v8"/><path d="m9 13 3 3 3-3"/></svg><h3 class="cat-card__name">Vacuômetros</h3><p class="cat-card__desc">Monitore vácuo com total confiabilidade.</p><span class="cat-card__link">Ver Produtos →</span></a>
-      <a href="catalogo.html?categoria=termometros" class="cat-card"><svg class="cat-card__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg><h3 class="cat-card__name">Termômetros</h3><p class="cat-card__desc">Controle de temperatura robusto e preciso.</p><span class="cat-card__link">Ver Produtos →</span></a>
+      <a href="catalogo.html?categoria=manometros" class="cat-card cat-card--main" data-cat="manometros"><svg class="cat-card__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="6" x2="12" y2="9"/><line x1="12" y1="15" x2="12" y2="18"/><line x1="6" y1="12" x2="9" y2="12"/><line x1="15" y1="12" x2="18" y2="12"/><line x1="12" y1="12" x2="16" y2="9"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg><h3 class="cat-card__name">Manômetros</h3><p class="cat-card__desc">Medição de pressão com máxima exatidão para as mais diversas aplicações industriais.</p><span class="cat-card__link">Ver Produtos →</span></a>
+      <a href="catalogo.html?categoria=manovacuometros" class="cat-card" data-cat="manovacuometros"><svg class="cat-card__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M5 12 a 7 7 0 0 1 14 0"/><line x1="12" y1="12" x2="16" y2="9"/></svg><h3 class="cat-card__name">Manovacuômetros</h3><p class="cat-card__desc">Pressão e vácuo em um único instrumento.</p><span class="cat-card__link">Ver Produtos →</span></a>
+      <a href="catalogo.html?categoria=vacuometros" class="cat-card" data-cat="vacuometros"><svg class="cat-card__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M5 12 a 7 7 0 0 1 14 0" stroke-dasharray="2 2"/><line x1="12" y1="12" x2="8" y2="9"/></svg><h3 class="cat-card__name">Vacuômetros</h3><p class="cat-card__desc">Monitore vácuo com total confiabilidade.</p><span class="cat-card__link">Ver Produtos →</span></a>
+      <a href="catalogo.html?categoria=termometros" class="cat-card" data-cat="termometros"><svg class="cat-card__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4a2 2 0 0 1 4 0v10.5a4 4 0 1 1-4 0z"/><line x1="12" y1="8" x2="12" y2="14"/></svg><h3 class="cat-card__name">Termômetros</h3><p class="cat-card__desc">Controle de temperatura robusto e preciso.</p><span class="cat-card__link">Ver Produtos →</span></a>
       <a href="catalogo.html" class="cat-card"><svg class="cat-card__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><h3 class="cat-card__name">Catálogo Completo</h3><p class="cat-card__desc">Mais de 50 instrumentos com ficha técnica. Use os filtros para encontrar.</p><span class="cat-card__link">Explorar Catálogo →</span></a>
     </div>
   </div></section>

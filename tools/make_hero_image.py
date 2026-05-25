@@ -1,7 +1,7 @@
 """
 Gera images/hero-manometro.png:
 
-1. Extrai o manometro da pagina 2 do PDF Diriflux (a foto institucional do
+1. Extrai o manometro da pagina 2 do PDF de origem (a foto institucional do
    manometro grande, limpa, sem logo).
 2. Recorta apenas a area do manometro (descarta o "SUA LOGOMARCA AQUI"
    original que vinha baked na imagem).

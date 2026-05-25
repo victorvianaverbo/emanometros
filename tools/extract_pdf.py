@@ -1,5 +1,5 @@
 """
-Extrai produtos + imagens do Catalogo Diriflux para o site Press Control.
+Extrai produtos + imagens do catalogo de origem para o site Press Control.
 
 Saidas:
   ../data/products.json     -> lista estruturada dos produtos

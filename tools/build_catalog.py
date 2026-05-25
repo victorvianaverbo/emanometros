@@ -2,8 +2,8 @@
 Gera o catalogo proprio da Press Control em PDF.
 
 Le ../data/products.json + imagens em ../images/products/ e produz
-../catalogo-presscontrol.pdf — com branding Press Control, SEM qualquer
-referencia a Diriflux.
+../catalogo-presscontrol.pdf — com branding Press Control, sem qualquer
+referencia a marca de origem.
 
 Rodar:
   cd framework-v20/emanometros/tools
@@ -23,8 +23,8 @@ from reportlab.pdfgen import canvas
 HERE = Path(__file__).resolve().parent
 SITE_ROOT = HERE.parent
 DATA = SITE_ROOT / "data" / "products.json"
-HERO_IMAGE = SITE_ROOT / "images" / "manometro-bare.png"
-HERO_TRANSPARENT = SITE_ROOT / "images" / "manometro-bare-transparent.png"
+HERO_IMAGE = SITE_ROOT / "images" / "manometro-bare.png"          # com seta/texto — usar na pag. Sobre
+HERO_COVER = SITE_ROOT / "images" / "manometro-cover.png"         # limpo, transparente — capa
 OUTPUT = SITE_ROOT / "catalogo-presscontrol.pdf"
 FONTS_DIR = HERE / "fonts"
 
@@ -45,12 +45,44 @@ SLATE_700 = HexColor("#334155")
 SLATE_900 = HexColor("#0F172A")
 WHATSAPP = HexColor("#25D366")
 
+VIOLET = HexColor("#7C3AED")
+AMBER = HexColor("#F59E0B")
+
 CAT_LABEL = {
     "manometros": "MANÔMETROS",
     "manovacuometros": "MANOVACUÔMETROS",
     "vacuometros": "VACUÔMETROS",
     "termometros": "TERMÔMETROS",
 }
+
+# Acentos de categoria (Design System Press Control)
+CAT_COLOR = {
+    "manometros": ELECTRIC,   # #0078D4
+    "manovacuometros": CYAN,  # #00B4D8
+    "vacuometros": VIOLET,    # #7C3AED
+    "termometros": AMBER,     # #F59E0B
+}
+CAT_NUM = {
+    "manometros": "01",
+    "manovacuometros": "02",
+    "vacuometros": "03",
+    "termometros": "04",
+}
+CAT_LEDE = {
+    "manometros": "Medição de pressão com máxima exatidão para as mais diversas "
+                  "aplicações industriais — ar comprimido, hidráulica, vapor, "
+                  "processos químicos e alimentícios.",
+    "manovacuometros": "Pressão e vácuo num único instrumento. Ideal para sistemas "
+                       "que operam acima e abaixo da pressão atmosférica.",
+    "vacuometros": "Monitoramento de vácuo com total confiabilidade para bombas, "
+                   "câmaras, embalagem e processos de sucção.",
+    "termometros": "Controle de temperatura robusto e preciso — bimetálicos, de "
+                   "haste e capilares à distância para os ambientes mais exigentes.",
+}
+
+
+def cat_color(cat):
+    return CAT_COLOR.get(cat, ELECTRIC)
 
 SPECS_LEFT = [
     ("material", "Material:"),
@@ -260,6 +292,93 @@ def draw_paragraph(c, x, y, text, font, size, max_width, line_height=None, color
 
 
 # ---------------------------------------------------------------------------
+# Ícones de especificação — vetoriais, viewBox 24×24 (vocabulário do Design System)
+# ---------------------------------------------------------------------------
+def draw_spec_icon(c, key, x, y, size, color):
+    """Desenha o ícone da spec `key` no canto inferior-esquerdo (x, y), lado `size`."""
+    s = size / 24.0
+
+    def X(v):
+        return x + v * s
+
+    def Y(v):
+        return y + (24 - v) * s  # PDF y invertido vs SVG
+
+    def W(v):
+        return v * s
+
+    def arch(x1, y1, cx1, cy1, cx2, cy2, x2, y2):
+        p = c.beginPath()
+        p.moveTo(X(x1), Y(y1))
+        p.curveTo(X(cx1), Y(cy1), X(cx2), Y(cy2), X(x2), Y(y2))
+        c.drawPath(p, stroke=1, fill=0)
+
+    c.saveState()
+    c.setStrokeColor(color)
+    c.setFillColor(color)
+    c.setLineWidth(max(W(2), 0.6))
+    c.setLineCap(1)
+    c.setLineJoin(1)
+
+    try:
+        if key == "diametro":
+            c.circle(X(12), Y(12), W(8), stroke=1, fill=0)
+            c.line(X(4), Y(12), X(20), Y(12))
+            c.line(X(6), Y(10), X(4), Y(12)); c.line(X(4), Y(12), X(6), Y(14))
+            c.line(X(18), Y(10), X(20), Y(12)); c.line(X(20), Y(12), X(18), Y(14))
+        elif key == "conexao":
+            c.rect(X(3), Y(14), W(6), W(4), stroke=1, fill=0)
+            c.rect(X(13), Y(15), W(3), W(6), stroke=1, fill=0)
+            c.line(X(9), Y(12), X(13), Y(12)); c.line(X(16), Y(12), X(21), Y(12))
+        elif key in ("escalas", "faixa_temperatura"):
+            arch(4, 16, 6, 6, 18, 6, 20, 16)
+            c.line(X(12), Y(16), X(16), Y(10))
+            c.circle(X(12), Y(16), W(1.4), stroke=0, fill=1)
+        elif key == "ponteiro":
+            c.circle(X(12), Y(12), W(8), stroke=1, fill=0)
+            c.line(X(12), Y(12), X(16), Y(8))
+            c.circle(X(12), Y(12), W(1.6), stroke=0, fill=1)
+        elif key == "classe":
+            p = c.beginPath()
+            p.moveTo(X(12), Y(3)); p.lineTo(X(20), Y(6)); p.lineTo(X(20), Y(12))
+            p.curveTo(X(20), Y(17), X(16), Y(20), X(12), Y(21))
+            p.curveTo(X(8), Y(20), X(4), Y(17), X(4), Y(12))
+            p.lineTo(X(4), Y(6)); p.close()
+            c.drawPath(p, stroke=1, fill=0)
+            c.line(X(9), Y(12), X(11), Y(14)); c.line(X(11), Y(14), X(15), Y(10))
+        elif key == "material":
+            c.circle(X(12), Y(12), W(8), stroke=1, fill=0)
+            c.circle(X(12), Y(12), W(4), stroke=1, fill=0)
+            c.line(X(4), Y(12), X(6), Y(12)); c.line(X(18), Y(12), X(20), Y(12))
+        elif key == "sensor":
+            arch(4, 18, 4, 10, 12, 4, 16, 5)
+            arch(16, 5, 20, 6, 20, 11, 14, 12)
+            c.circle(X(4), Y(18), W(1.5), stroke=0, fill=1)
+        elif key == "temperatura":
+            p = c.beginPath()
+            p.moveTo(X(10), Y(6)); p.lineTo(X(10), Y(15))
+            c.drawPath(p, stroke=1, fill=0)
+            c.line(X(14), Y(4), X(14), Y(15))
+            c.line(X(10), Y(4), X(14), Y(4))
+            c.circle(X(12), Y(17), W(4), stroke=1, fill=0)
+        elif key == "haste":
+            c.line(X(12), Y(3), X(12), Y(16))
+            c.rect(X(9), Y(21), W(6), W(5), stroke=1, fill=0)
+        elif key == "capilar":
+            arch(3, 12, 6, 8, 9, 16, 12, 12)
+            arch(12, 12, 15, 8, 18, 16, 21, 12)
+        elif key == "visor":
+            c.roundRect(X(4), Y(18), W(16), W(12), W(2), stroke=1, fill=0)
+            c.line(X(4), Y(10), X(20), Y(10))
+        else:  # fallback
+            c.circle(X(12), Y(12), W(8), stroke=1, fill=0)
+            c.line(X(9), Y(12), X(15), Y(12)); c.line(X(12), Y(9), X(12), Y(15))
+    except Exception:
+        pass
+    c.restoreState()
+
+
+# ---------------------------------------------------------------------------
 # COVER — Industrial elegant
 # ---------------------------------------------------------------------------
 def page_cover(c):
@@ -283,11 +402,11 @@ def page_cover(c):
         gx = width - 95 * mm + i * 5 * mm
         c.line(gx, 22 * mm, gx, height - 22 * mm)
 
-    # Marca d'agua: aperture mark gigante atras (decorativo)
+    # Marca d'agua: aperture mark atras da foto do manometro (canto inferior direito)
     draw_aperture_mark(
-        c, width / 2 + 38 * mm, height / 2 - 5 * mm, 200 * mm,
-        body_color=_with_alpha(CYAN, 0.06),
-        needle_color=_with_alpha(CYAN, 0.10),
+        c, width - 62 * mm, 76 * mm, 170 * mm,
+        body_color=_with_alpha(CYAN, 0.05),
+        needle_color=_with_alpha(CYAN, 0.08),
     )
 
     # ─── Top band com logo ───
@@ -304,16 +423,16 @@ def page_cover(c):
 
     # ─── Badge "EDIÇÃO 2026" ───
     badge_y = height - 50 * mm
-    badge_w = 38 * mm
+    badge_w = 52 * mm
     c.setFillColor(_with_alpha(CYAN, 0.12))
     c.setStrokeColor(_with_alpha(CYAN, 0.35))
     c.setLineWidth(0.6)
     c.roundRect(20 * mm, badge_y, badge_w, 7 * mm, 3.5 * mm, fill=1, stroke=1)
     c.setFillColor(CYAN)
-    c.circle(24 * mm, badge_y + 3.5 * mm, 1 * mm, fill=1, stroke=0)
+    c.circle(24 * mm, badge_y + 3.5 * mm, 1.1 * mm, fill=1, stroke=0)
     c.setFillColor(CYAN)
     c.setFont(Fonts.body_bold, 8)
-    c.drawString(27 * mm, badge_y + 2.4 * mm, "EDIÇÃO 2026  ·  CATÁLOGO")
+    c.drawString(28.5 * mm, badge_y + 2.4 * mm, "EDIÇÃO 2026  ·  CATÁLOGO")
 
     # ─── Título principal: CATÁLOGO / DE / PRODUTOS ───
     c.setFillColor(white)
@@ -336,18 +455,18 @@ def page_cover(c):
                  "Pronta entrega · Personalização com sua marca · Envio para todo Brasil")
 
     # ─── Imagem do manometro (canto inferior direito, fundo navy) ───
-    hero = HERO_TRANSPARENT if HERO_TRANSPARENT.exists() else HERO_IMAGE
+    hero = HERO_COVER if HERO_COVER.exists() else HERO_IMAGE
     if hero.exists():
-        img_w = 88 * mm
-        img_h = 88 * mm
-        img_x = width - img_w - 18 * mm
+        img_w = 78 * mm
+        img_h = 92 * mm
+        img_x = width - img_w - 22 * mm
         img_y = 32 * mm
-        # halo cyan suave
+        # halo cyan suave atrás da foto
         c.saveState()
         from reportlab.lib.colors import Color
-        for i in range(8):
-            rr = (img_w / 2 + 18) - i * 2.4
-            c.setFillColor(Color(0, 0.706, 0.847, alpha=0.035))
+        for i in range(10):
+            rr = (max(img_w, img_h) / 2 + 22) - i * 2.4
+            c.setFillColor(Color(0, 0.706, 0.847, alpha=0.03))
             c.circle(img_x + img_w / 2, img_y + img_h / 2, rr, fill=1, stroke=0)
         c.restoreState()
         c.drawImage(
@@ -445,10 +564,11 @@ def page_sobre(c):
 
     # Highlight box
     y -= 4
+    box_h = 34 * mm
     c.setFillColor(NAVY)
-    c.roundRect(text_x, y - 26 * mm, text_max, 26 * mm, 2 * mm, fill=1, stroke=0)
+    c.roundRect(text_x, y - box_h, text_max, box_h, 2 * mm, fill=1, stroke=0)
     c.setFillColor(CYAN)
-    c.rect(text_x, y - 26 * mm, 1.6 * mm, 26 * mm, fill=1, stroke=0)
+    c.rect(text_x, y - box_h, 1.6 * mm, box_h, fill=1, stroke=0)
     c.setFillColor(CYAN)
     c.setFont(Fonts.body_bold, 8)
     c.drawString(text_x + 6 * mm, y - 7 * mm, "PERSONALIZAÇÃO")
@@ -457,10 +577,10 @@ def page_sobre(c):
     c.drawString(text_x + 6 * mm, y - 13.5 * mm, "Sua marca em cada medição.")
     c.setFillColor(_with_alpha(white, 0.75))
     c.setFont(Fonts.body, 9.5)
-    cur = y - 18 * mm
-    for line in wrap_text(c, "Personalizamos manômetros com a logomarca, cores e escalas customizadas para sua empresa.", Fonts.body, 9.5, text_max - 12 * mm):
+    cur = y - 19 * mm
+    for line in wrap_text(c, "Personalizamos manômetros com logomarca, cores e escalas customizadas para sua empresa.", Fonts.body, 9.5, text_max - 12 * mm):
         c.drawString(text_x + 6 * mm, cur, line)
-        cur -= 12
+        cur -= 13
 
     # Lado direito: imagem do manômetro
     if HERO_IMAGE.exists():
@@ -519,7 +639,7 @@ def page_sobre(c):
 # ---------------------------------------------------------------------------
 # INDEX
 # ---------------------------------------------------------------------------
-def page_index(c, products, starting_page):
+def page_index(c, products, product_pages):
     width, height = A4
     c.setFillColor(white)
     c.rect(0, 0, width, height, fill=1, stroke=0)
@@ -542,7 +662,6 @@ def page_index(c, products, starting_page):
         groups.setdefault(p["categoria"], []).append(p)
 
     y = height - 65 * mm
-    page_counter = starting_page
 
     col_x = [20 * mm, width / 2 + 4 * mm]
     col_widths = [width / 2 - 28 * mm] * 2
@@ -557,14 +676,18 @@ def page_index(c, products, starting_page):
             y = max(y, y_start_row)
             col = 0
             y_start_row = y
-        c.setFillColor(ACCENT)
+        accent = cat_color(cat)
+        # marcador da categoria na cor do acento
+        c.setFillColor(accent)
+        c.rect(col_x[col], y - 0.5, 2.4 * mm, 2.4 * mm, fill=1, stroke=0)
+        c.setFillColor(accent)
         c.setFont(Fonts.display_bold, 11.5)
-        c.drawString(col_x[col], y, CAT_LABEL[cat])
+        c.drawString(col_x[col] + 4 * mm, y, CAT_LABEL[cat])
         c.setFillColor(SLATE_400)
         c.setFont(Fonts.body, 9)
         c.drawRightString(col_x[col] + col_widths[col], y, f"{len(items)} produtos")
         y -= 5
-        c.setStrokeColor(ACCENT)
+        c.setStrokeColor(accent)
         c.setLineWidth(0.8)
         c.line(col_x[col], y, col_x[col] + col_widths[col], y)
         y -= 9
@@ -593,9 +716,8 @@ def page_index(c, products, starting_page):
                 name = name + "…"
             c.drawString(col_x[col], y, name)
             c.setFillColor(SLATE_400)
-            c.drawRightString(col_x[col] + col_widths[col], y, f"pág. {page_counter}")
+            c.drawRightString(col_x[col] + col_widths[col], y, f"pág. {product_pages.get(p['id'], '—')}")
             y -= 11
-            page_counter += 1
         y -= 8
 
     draw_footer_strip(c, page_num=3)
@@ -612,10 +734,11 @@ def page_product(c, product, page_num, total_pages):
     draw_header_strip(c)
 
     cat = CAT_LABEL.get(product["categoria"], product["categoria"].upper())
-    c.setFillColor(ELECTRIC)
+    accent = cat_color(product["categoria"])
+    c.setFillColor(accent)
     c.setFont(Fonts.body_bold, 8.5)
-    c.drawString(20 * mm, height - 26 * mm, cat)
-    c.setFillColor(CYAN)
+    c.drawString(20 * mm, height - 26 * mm, f"{CAT_NUM.get(product['categoria'], '')} · {cat}".strip(" ·"))
+    c.setFillColor(accent)
     c.rect(20 * mm, height - 29 * mm, 14 * mm, 0.6, fill=1, stroke=0)
 
     c.setFillColor(SLATE_900)
@@ -679,29 +802,36 @@ def page_product(c, product, page_num, total_pages):
     specs_y = photos_box_y - 10 * mm
     col_x = [20 * mm, width / 2 + 4 * mm]
     col_w = width / 2 - 28 * mm
-    label_color = ACCENT
+    label_color = accent
     value_color = SLATE_900
+    icon_sz = 4.2 * mm
+    text_off = icon_sz + 2.2 * mm  # recuo do texto p/ caber o ícone
 
     def draw_specs_column(col, items, top_y):
         y = top_y
+        x0 = col_x[col]
+        tx = x0 + text_off
+        avail_w = col_w - text_off
         for key, label in items:
             value = specs.get(key, "")
             if not value:
                 continue
+            # ícone da spec na cor da categoria, alinhado à linha do label
+            draw_spec_icon(c, key, x0, y - 0.6 * mm, icon_sz, accent)
             c.setFillColor(label_color)
             c.setFont(Fonts.body_bold, 9.5)
-            c.drawString(col_x[col], y, label)
+            c.drawString(tx, y, label)
             lbl_w = c.stringWidth(label + " ", Fonts.body_bold, 9.5)
             c.setFillColor(value_color)
             c.setFont(Fonts.body, 9.5)
-            avail = col_w - lbl_w
+            avail = avail_w - lbl_w
             if c.stringWidth(value, Fonts.body, 9.5) <= avail:
-                c.drawString(col_x[col] + lbl_w, y, value)
+                c.drawString(tx + lbl_w, y, value)
                 y -= 14
             else:
                 y -= 12
-                for line in wrap_text(c, value, Fonts.body, 9.5, col_w):
-                    c.drawString(col_x[col], y, line)
+                for line in wrap_text(c, value, Fonts.body, 9.5, avail_w):
+                    c.drawString(tx, y, line)
                     y -= 12
                 y -= 2
         return y
@@ -731,6 +861,60 @@ def page_product(c, product, page_num, total_pages):
     c.setFillColor(white)
     c.setFont(Fonts.body_bold, 10)
     c.drawCentredString(width / 2, cta_y + 3 * mm, f"Orçamento via WhatsApp  ·  {PHONE}  ·  {EMAIL}")
+
+    draw_footer_strip(c, page_num=page_num, total_pages=total_pages)
+    c.showPage()
+
+
+# ---------------------------------------------------------------------------
+# CATEGORY OPENER — banda colorida + número grande (template do Design System)
+# ---------------------------------------------------------------------------
+def page_category_opener(c, cat, items, page_num, total_pages):
+    width, height = A4
+    accent = cat_color(cat)
+    band_h = height * 0.36
+
+    # fundo branco
+    c.setFillColor(white)
+    c.rect(0, 0, width, height, fill=1, stroke=0)
+
+    # banda de cor no terço superior
+    c.setFillColor(accent)
+    c.rect(0, height - band_h, width, band_h, fill=1, stroke=0)
+
+    # número grande translúcido no canto direito da banda
+    c.saveState()
+    c.setFillColor(_with_alpha(white, 0.16))
+    c.setFont(Fonts.display_xbold, 150)
+    c.drawRightString(width - 16 * mm, height - band_h + 14 * mm, CAT_NUM.get(cat, ""))
+    c.restoreState()
+
+    # eyebrow + nome da categoria (sobre a banda, base inferior)
+    c.setFillColor(_with_alpha(white, 0.85))
+    c.setFont(Fonts.body_bold, 9)
+    c.drawString(20 * mm, height - band_h + 30 * mm, f"CATEGORIA {CAT_NUM.get(cat, '')}")
+    c.setFillColor(white)
+    c.setFont(Fonts.display_xbold, 34)
+    c.drawString(20 * mm, height - band_h + 14 * mm, CAT_LABEL[cat].title())
+
+    # corpo: lede + contagem
+    y = height - band_h - 22 * mm
+    y = draw_paragraph(c, 20 * mm, y, CAT_LEDE.get(cat, ""), Fonts.body, 12,
+                       width - 40 * mm, line_height=18, color=SLATE_700)
+
+    # destaque de contagem
+    y -= 10 * mm
+    c.setFillColor(accent)
+    c.setFont(Fonts.display_xbold, 28)
+    c.drawString(20 * mm, y, str(len(items)))
+    c.setFillColor(SLATE_600)
+    c.setFont(Fonts.body, 11)
+    c.drawString(20 * mm + c.stringWidth(str(len(items)), Fonts.display_xbold, 28) + 4 * mm, y + 2,
+                 "produtos nesta categoria")
+
+    # linha de acento
+    c.setFillColor(accent)
+    c.rect(20 * mm, y - 8 * mm, 30 * mm, 0.8, fill=1, stroke=0)
 
     draw_footer_strip(c, page_num=page_num, total_pages=total_pages)
     c.showPage()
@@ -830,7 +1014,25 @@ def main():
     cat_order = {"manometros": 0, "manovacuometros": 1, "vacuometros": 2, "termometros": 3}
     products.sort(key=lambda p: (cat_order.get(p["categoria"], 9), p["nome"]))
 
-    total_pages = 3 + len(products) + 1
+    # Ordem das categorias presentes
+    ordered_cats = sorted(
+        {p["categoria"] for p in products},
+        key=lambda cat: cat_order.get(cat, 9),
+    )
+    groups = {}
+    for p in products:
+        groups.setdefault(p["categoria"], []).append(p)
+
+    # Pré-cálculo da paginação: cover(1) sobre(2) índice(3),
+    # depois para cada categoria: 1 abertura + N produtos; por fim contracapa.
+    product_pages = {}
+    page = 4
+    for cat in ordered_cats:
+        page += 1  # página de abertura da categoria
+        for p in groups[cat]:
+            product_pages[p["id"]] = page
+            page += 1
+    total_pages = page  # número da contracapa = última página
 
     setup_fonts()
 
@@ -842,12 +1044,15 @@ def main():
 
     page_cover(c)
     page_sobre(c)
-    page_index(c, products, starting_page=4)
+    page_index(c, products, product_pages)
 
     page_num = 4
-    for p in products:
-        page_product(c, p, page_num, total_pages)
+    for cat in ordered_cats:
+        page_category_opener(c, cat, groups[cat], page_num, total_pages)
         page_num += 1
+        for p in groups[cat]:
+            page_product(c, p, page_num, total_pages)
+            page_num += 1
 
     page_back(c)
     c.save()
