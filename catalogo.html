@@ -14,74 +14,105 @@
   <style>
     /* Critical CSS — above-the-fold */
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    :root{--navy:#0A1628;--navy-light:#152238;--steel-blue:#1E3A5F;--electric-blue:#0078D4;--electric-blue-hover:#0063b1;--cyan:#00B4D8;--cat-mano:#0078D4;--cat-manovac:#00B4D8;--cat-vac:#7C3AED;--cat-temp:#F59E0B;--slate-50:#F8FAFC;--slate-200:#E2E8F0;--slate-400:#94A3B8;--slate-600:#475569;--slate-900:#0F172A;--whatsapp:#25D366;--font-display:'Plus Jakarta Sans',system-ui,sans-serif;--font-body:'DM Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace}
+    :root{--navy:#0A1628;--navy-light:#152238;--steel-blue:#1E3A5F;--electric-blue:#0078D4;--electric-blue-hover:#0063b1;--cyan:#00B4D8;--cat-mano:#0078D4;--cat-manovac:#00B4D8;--cat-vac:#7C3AED;--cat-temp:#F59E0B;--paper:#FAFAF7;--slate-50:#F8FAFC;--slate-100:#F1F5F9;--slate-200:#E2E8F0;--slate-300:#CBD5E1;--slate-400:#94A3B8;--slate-600:#475569;--slate-700:#334155;--slate-900:#0F172A;--whatsapp:#25D366;--whatsapp-dark:#1DA851;--font-display:'Plus Jakarta Sans',system-ui,sans-serif;--font-body:'DM Sans',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace}
     html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
     body{font-family:var(--font-body);color:var(--slate-900);background:var(--slate-50);line-height:1.6;overflow-x:hidden;padding-top:40px}
+    body.home-light{background:var(--slate-50);color:var(--navy);padding-top:0}
     a{text-decoration:none;color:inherit}button{border:none;cursor:pointer;background:none;font-family:inherit}
-    .topbar{position:fixed;top:0;left:0;right:0;z-index:1001;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);border-bottom:1px solid rgba(0,180,216,.15)}
-    .topbar__container{max-width:1280px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap}
-    .topbar__item{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);letter-spacing:.02em;white-space:nowrap}
-    .navbar{position:relative;z-index:100;background:var(--navy-light);border-bottom:1px solid rgba(255,255,255,.06)}
-    .navbar__container{max-width:1280px;margin:0 auto;padding:0 32px;height:72px;display:flex;align-items:center;justify-content:space-between}
-    .navbar__links{display:flex;align-items:center;gap:32px}
-    .navbar__links a{font-size:.9rem;font-weight:500;color:var(--slate-400)}
-    .navbar__cta{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:#1a9e4a;color:#fff;font-size:.85rem;font-weight:700;border-radius:100px}
-    .navbar__toggle{display:none;color:#fff;padding:8px;background:transparent;border:0;cursor:pointer;border-radius:8px}
-    .pc-logo{display:inline-flex;align-items:center;gap:10px;line-height:1;text-decoration:none}
-    .pc-logo .pc-mark{color:#fff;flex-shrink:0;display:block}
-    .pc-logo .pc-mark__needle{stroke:var(--cyan)}
-    .pc-logo .pc-wordmark{font-family:var(--font-display);font-weight:700;font-size:1.25rem;letter-spacing:-.02em;color:#fff}
-    .catalog-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--steel-blue) 100%);padding:64px 0 48px;position:relative;overflow:hidden}
-    .catalog-hero__container{max-width:1280px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
-    .catalog-hero__title{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,4vw,3rem);color:#fff;line-height:1.1;letter-spacing:-.03em;margin-top:8px;margin-bottom:16px}
-    .catalog-hero__sub{font-size:1rem;color:var(--slate-400);line-height:1.65;max-width:640px}
-    .catalog-hero__stats{display:flex;gap:48px;margin-top:32px;flex-wrap:wrap}
-    .catalog-hero__stats strong{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:#fff}
-    .catalog-hero__stats span{font-size:.75rem;color:var(--slate-400);text-transform:uppercase;letter-spacing:.08em}
-    .section-label{display:block;font-family:var(--font-mono);font-size:.75rem;font-weight:500;color:var(--electric-blue);text-transform:uppercase;letter-spacing:.12em;margin-bottom:16px}
-    .section-label--cyan{color:var(--cyan)}
-    .section-title--accent{color:var(--electric-blue)}
     .whatsapp-float{position:fixed;bottom:24px;right:24px;z-index:999;width:60px;height:60px;background:var(--whatsapp);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4)}
-    @media(max-width:1024px){.navbar__links{display:none}.navbar__toggle{display:inline-flex;align-items:center;justify-content:center}.navbar__cta{display:none}}
-    @media(max-width:768px){.topbar{display:none}.navbar{position:fixed;top:0;left:0;right:0;z-index:1001}body{padding-top:64px}.navbar__container{height:64px;padding:0 16px}.pc-logo .pc-wordmark{font-size:1.1rem}.pc-logo .pc-mark{width:28px;height:28px}.catalog-hero{padding:28px 0 20px}.catalog-hero__container{padding:0 20px}.whatsapp-float{bottom:16px;right:16px;width:52px;height:52px}}
+    /* ───── TOPO LIGHT (header + hero) ───── */
+    .site-top .header{position:relative;background:rgba(255,255,255,.85);padding:16px 40px;z-index:60;border-bottom:1px solid var(--slate-200);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+    .site-top .header__inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px}
+    .site-top .brand{display:flex;align-items:center;gap:12px}
+    .site-top .brand__mark{display:flex;align-items:center;width:42px;height:42px;color:var(--navy)}
+    .site-top .brand__name{font-family:var(--font-display);font-weight:800;font-size:22px;letter-spacing:-.028em;color:var(--navy)}
+    .site-top .brand__name em{color:var(--electric-blue);font-style:normal;font-weight:700}
+    .site-top .nav{display:flex;align-items:center;gap:6px}
+    .site-top .nav a{padding:8px 16px;font-size:14px;font-weight:500;color:var(--slate-700);border-radius:8px;transition:background .18s,color .18s}
+    .site-top .nav a:hover{color:var(--navy);background:var(--slate-100)}
+    .site-top .header__cta{display:flex;align-items:center;gap:14px}
+    .site-top .btn-wpp{display:inline-flex;align-items:center;gap:9px;background:var(--whatsapp);color:#fff;font-weight:700;font-size:14px;padding:11px 22px;border-radius:100px;transition:transform .2s,box-shadow .2s,background .2s;box-shadow:0 4px 16px rgba(37,211,102,.22)}
+    .site-top .btn-wpp:hover{background:var(--whatsapp-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,211,102,.32)}
+    .site-top .btn-wpp svg{width:16px;height:16px}
+    .site-top .navbar__toggle{display:none;color:var(--navy);padding:8px;background:transparent;border:0;border-radius:8px}
+    .catalog-hero{background:radial-gradient(ellipse at 50% 0%,#fff 0%,var(--slate-50) 55%,var(--slate-100) 100%);padding:72px 0 56px;position:relative;overflow:hidden;border-bottom:1px solid var(--slate-200)}
+    .catalog-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 30%,rgba(0,180,216,.08),transparent 55%);pointer-events:none}
+    .catalog-hero__container{max-width:1280px;margin:0 auto;padding:0 40px;position:relative;z-index:1}
+    .catalog-hero .section-label{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:12px;font-weight:600;color:var(--electric-blue);text-transform:uppercase;letter-spacing:.14em;margin-bottom:18px;background:rgba(0,120,212,.08);border:1px solid rgba(0,120,212,.18);padding:7px 14px;border-radius:100px}
+    .catalog-hero .section-label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--electric-blue);box-shadow:0 0 0 4px rgba(0,120,212,.18)}
+    .catalog-hero .section-label--cyan{color:var(--electric-blue)}
+    .catalog-hero__title{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,4vw,3.2rem);color:var(--navy);line-height:1.05;letter-spacing:-.035em;margin-bottom:18px}
+    .section-title--accent{color:var(--electric-blue)}
+    .catalog-hero__sub{font-size:1.05rem;color:var(--slate-700);line-height:1.6;max-width:640px}
+    .catalog-hero__sub strong{color:var(--navy);font-weight:600}
+    .catalog-hero__stats{display:flex;gap:48px;margin-top:36px;flex-wrap:wrap}
+    .catalog-hero__stats strong{font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--navy);letter-spacing:-.03em;display:block}
+    .catalog-hero__stats span{font-size:.72rem;color:var(--slate-600);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+    @media(max-width:1100px){.site-top .nav,.site-top .header__cta{display:none}.site-top .navbar__toggle{display:inline-flex;align-items:center;justify-content:center}.site-top .header{padding:14px 20px}}
+    @media(max-width:768px){body.home-light{padding-top:0}.catalog-hero{padding:40px 0 32px}.catalog-hero__container{padding:0 20px}.catalog-hero__stats{gap:28px}.whatsapp-float{bottom:16px;right:16px;width:52px;height:52px}}
   </style>
   <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="style.css"></noscript>
   <script src="script.js" defer></script>
 </head>
-<body>
+<body class="home-light">
 
-  <!-- TOPBAR -->
-  <div class="topbar">
-    <div class="topbar__container">
-      <div class="topbar__item">Personalização com Sua Logo</div>
-      <div class="topbar__item">Pronta Entrega</div>
-      <div class="topbar__item">Consultores Especializados</div>
-      <div class="topbar__item">Envio para Todo Brasil</div>
-    </div>
-  </div>
+  <!-- ===== Símbolo Aperture reutilizável ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <symbol id="aperture" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="3.5"/>
+      <g stroke="currentColor" stroke-linecap="round">
+        <line x1="50" y1="10" x2="50" y2="20" stroke-width="2.4"/>
+        <line x1="50" y1="80" x2="50" y2="90" stroke-width="2.4"/>
+        <line x1="10" y1="50" x2="20" y2="50" stroke-width="2.4"/>
+        <line x1="80" y1="50" x2="90" y2="50" stroke-width="2.4"/>
+        <line x1="22" y1="22" x2="27" y2="27" stroke-width="1.4" stroke-opacity=".85"/>
+        <line x1="73" y1="73" x2="78" y2="78" stroke-width="1.4" stroke-opacity=".85"/>
+        <line x1="78" y1="22" x2="73" y2="27" stroke-width="1.4" stroke-opacity=".85"/>
+        <line x1="22" y1="78" x2="27" y2="73" stroke-width="1.4" stroke-opacity=".85"/>
+        <line x1="15" y1="32" x2="20" y2="34" stroke-width="1.4" stroke-opacity=".5"/>
+        <line x1="32" y1="15" x2="34" y2="20" stroke-width="1.4" stroke-opacity=".5"/>
+        <line x1="66" y1="15" x2="68" y2="20" stroke-width="1.4" stroke-opacity=".5"/>
+        <line x1="80" y1="32" x2="85" y2="34" stroke-width="1.4" stroke-opacity=".5"/>
+        <line x1="80" y1="68" x2="85" y2="66" stroke-width="1.4" stroke-opacity=".5"/>
+        <line x1="66" y1="85" x2="68" y2="80" stroke-width="1.4" stroke-opacity=".5"/>
+        <line x1="32" y1="85" x2="34" y2="80" stroke-width="1.4" stroke-opacity=".5"/>
+        <line x1="15" y1="68" x2="20" y2="66" stroke-width="1.4" stroke-opacity=".5"/>
+      </g>
+      <line x1="44" y1="56" x2="74" y2="36" stroke="#00B4D8" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="50" cy="50" r="4" fill="currentColor"/>
+      <circle cx="50" cy="50" r="1.6" fill="#F8FAFC"/>
+    </symbol>
+  </defs></svg>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="navbar__container">
-      <a href="index.html" class="pc-logo navbar__logo"><svg class="pc-mark" width="32" height="32" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" fill="none"><circle cx="50" cy="50" r="46" stroke-width="3.5"/><g stroke-linecap="round"><line x1="50" y1="20" x2="50" y2="10" stroke-width="2.4"/><line x1="59.06" y1="16.19" x2="60.35" y2="11.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="67.5" y1="19.69" x2="70" y2="15.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="73.33" y1="26.67" x2="78.28" y2="21.72" stroke-width="1.4" stroke-opacity=".85"/><line x1="80.31" y1="32.5" x2="84.64" y2="30" stroke-width="1.4" stroke-opacity=".45"/><line x1="83.81" y1="40.94" x2="88.64" y2="39.65" stroke-width="1.4" stroke-opacity=".45"/><line x1="80" y1="50" x2="90" y2="50" stroke-width="2.4"/><line x1="83.81" y1="59.06" x2="88.64" y2="60.35" stroke-width="1.4" stroke-opacity=".45"/><line x1="80.31" y1="67.5" x2="84.64" y2="70" stroke-width="1.4" stroke-opacity=".45"/><line x1="73.33" y1="73.33" x2="78.28" y2="78.28" stroke-width="1.4" stroke-opacity=".85"/><line x1="67.5" y1="80.31" x2="70" y2="84.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="59.06" y1="83.81" x2="60.35" y2="88.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="50" y1="80" x2="50" y2="90" stroke-width="2.4"/><line x1="40.94" y1="83.81" x2="39.65" y2="88.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="32.5" y1="80.31" x2="30" y2="84.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="26.67" y1="73.33" x2="21.72" y2="78.28" stroke-width="1.4" stroke-opacity=".85"/><line x1="19.69" y1="67.5" x2="15.36" y2="70" stroke-width="1.4" stroke-opacity=".45"/><line x1="16.19" y1="59.06" x2="11.36" y2="60.35" stroke-width="1.4" stroke-opacity=".45"/><line x1="20" y1="50" x2="10" y2="50" stroke-width="2.4"/><line x1="16.19" y1="40.94" x2="11.36" y2="39.65" stroke-width="1.4" stroke-opacity=".45"/><line x1="19.69" y1="32.5" x2="15.36" y2="30" stroke-width="1.4" stroke-opacity=".45"/><line x1="26.67" y1="26.67" x2="21.72" y2="21.72" stroke-width="1.4" stroke-opacity=".85"/><line x1="32.5" y1="19.69" x2="30" y2="15.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="40.94" y1="16.19" x2="39.65" y2="11.36" stroke-width="1.4" stroke-opacity=".45"/></g><line class="pc-mark__needle" x1="44.8" y1="53" x2="74.25" y2="36" stroke-width="4" stroke-linecap="round"/></g><circle cx="50" cy="50" r="4" fill="currentColor"/><circle cx="50" cy="50" r="1.6" fill="#F8FAFC"/></svg><span class="pc-wordmark">Press Control</span></a>
-      <div class="navbar__links">
+  <div class="site-top">
+
+  <!-- HEADER (light) -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="index.html" class="brand">
+        <span class="brand__mark"><svg width="42" height="42"><use href="#aperture"/></svg></span>
+        <span class="brand__name">Press<em>Control</em></span>
+      </a>
+      <nav class="nav">
         <a href="index.html#categorias">Início</a>
         <a href="catalogo.html?categoria=manometros">Manômetros</a>
         <a href="catalogo.html?categoria=vacuometros">Vacuômetros</a>
         <a href="catalogo.html?categoria=manovacuometros">Manovacuômetros</a>
         <a href="catalogo.html?categoria=termometros">Termômetros</a>
         <a href="index.html#sobre">Sobre</a>
+      </nav>
+      <div class="header__cta">
+        <button class="btn-wpp wa-btn" data-msg="preciso de ajuda" type="button">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 0 0 .603.603l5.822-1.458A11.948 11.948 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+          Fale Conosco
+        </button>
       </div>
       <button class="navbar__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
       </button>
-      <button class="navbar__cta wa-btn" data-msg="preciso de ajuda" type="button">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 00.603.603l5.822-1.458A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-        Fale Conosco
-      </button>
     </div>
-  </nav>
+  </header>
 
   <!-- HERO COMPACTO -->
   <header class="catalog-hero">
@@ -96,6 +127,8 @@
       </div>
     </div>
   </header>
+
+  </div><!-- /.site-top -->
 
   <!-- FILTROS -->
   <section class="catalog-filters" id="catalogFilters">
@@ -295,13 +328,14 @@
 
       function renderCard(p) {
         const cat = CAT_LABEL[p.categoria] || p.categoria;
-        const hasFront = !!p.imagem;
-        const hasBack = !!p.imagem_verso;
-        const flippable = hasFront && hasBack;
+        // usa a frente; se não houver, cai para o verso como imagem principal
+        const frontSrc = p.imagem || p.imagem_verso || '';
+        const hasFront = !!frontSrc;
+        const flippable = !!(p.imagem && p.imagem_verso); // só vira se tiver frente E verso
         const front = hasFront
-          ? `<img src="${p.imagem}" alt="${p.nome}" loading="lazy">`
+          ? `<img src="${frontSrc}" alt="${p.nome}" loading="lazy">`
           : `<svg viewBox="0 0 80 80" width="60" fill="none" stroke="#94A3B8" stroke-width="1.5" opacity=".25"><circle cx="40" cy="42" r="30"/><line x1="40" y1="42" x2="52" y2="28"/><circle cx="40" cy="42" r="3"/></svg>`;
-        const back = hasBack ? `<img src="${p.imagem_verso}" alt="${p.nome} (verso)" loading="lazy">` : '';
+        const back = flippable ? `<img src="${p.imagem_verso}" alt="${p.nome} (verso)" loading="lazy">` : '';
         return `
           <article class="product-card${flippable ? ' product-card--flippable' : ''}" data-id="${p.id}" data-cat="${p.categoria}">
             ${badgeFor(p)}
