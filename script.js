@@ -44,6 +44,27 @@ function specIcon(key) {
   return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SPEC_ICONS[key] || SPEC_ICON_FALLBACK}</svg>`;
 }
 
+/* Bloco de specs do card — linhas mono (padrão técnico extraído do IndusGauge) */
+const MAT_LABEL = {
+  'aco-carbono': 'Aço Carbono',
+  'inox-latao': 'Inox + Latão',
+  'total-inox': 'Total Inox',
+};
+function specRowsHTML(p) {
+  const s = p.specs || {};
+  const rows = [];
+  const dia = s.diametro || (p.diametro_mm ? `${p.diametro_mm}mm` : '');
+  if (dia) rows.push(['Ø', dia]);
+  const mat = MAT_LABEL[p.material_class]
+    || (s.material ? s.material.replace(/^Caixa\s*/i, '').split(/\s+e\s+os?\s+/i)[0].trim() : '');
+  if (mat) rows.push(['Mat', mat]);
+  if (s.conexao) rows.push(['Con', s.conexao]);
+  else if (s.escalas) rows.push(['Esc', s.escalas]);
+  else if (s.faixa_temperatura) rows.push(['Faixa', s.faixa_temperatura]);
+  return `<ul class="product-card__specs">${rows.map(([k, v]) =>
+    `<li><span class="product-card__spec-key">${k}</span><span class="product-card__spec-val">${v}</span></li>`).join('')}</ul>`;
+}
+
 // Produtos carregados via fetch (catalogo.html); index.html não precisa do array completo
 let productMap = {};
 
@@ -187,6 +208,7 @@ const dsState = {
 /* ── API pública ── */
 window.eMan = {
   openWa: waState.open,
+  specRows: specRowsHTML,
   openDatasheet: (id) => {
     const p = productMap[id];
     if (!p) return;

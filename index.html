@@ -69,7 +69,7 @@
     .site-top .navbar__toggle{display:none;color:var(--navy);padding:8px;background:transparent;border:0;border-radius:8px}
     .site-top .hero{position:relative;min-height:auto;display:block;background:radial-gradient(ellipse at 50% 0%,#fff 0%,var(--slate-50) 50%,var(--slate-100) 100%);overflow:hidden;padding:88px 40px 96px}
     .site-top .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 78% 38%,rgba(0,180,216,.10),transparent 55%);pointer-events:none}
-    .site-top .hero__inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;position:relative;z-index:1}
+    .site-top .hero__inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center;position:relative;z-index:1}
     .site-top .hero__eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--electric-blue);margin-bottom:24px;background:rgba(0,120,212,.08);border:1px solid rgba(0,120,212,.18);padding:8px 16px;border-radius:100px}
     .site-top .hero__eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--electric-blue);box-shadow:0 0 0 4px rgba(0,120,212,.18)}
     .site-top .hero__title{font-family:var(--font-display);font-weight:800;font-size:clamp(2.8rem,5vw,4.4rem);line-height:1.02;letter-spacing:-.038em;color:var(--navy);margin-bottom:24px}
@@ -92,6 +92,12 @@
     .site-top .hero__visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:560px;animation:none}
     .site-top .hero__mark{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;color:var(--navy);filter:none;width:auto;max-width:none}
     .site-top .hero__mark svg.aperture{width:420px;height:420px;filter:drop-shadow(0 24px 50px rgba(10,22,40,.12))}
+    .site-top .hero__video-frame{position:relative;z-index:2;width:100%;max-width:680px;border:1px solid var(--slate-200);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 30px 70px rgba(10,22,40,.18),0 2px 6px rgba(10,22,40,.06)}
+    .site-top .hero__video{display:block;width:100%;height:auto;aspect-ratio:16/9}
+    .site-top .hero__video-caption{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 16px;background:var(--navy)}
+    .site-top .hero__video-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:#fff}
+    .site-top .hero__video-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--whatsapp);box-shadow:0 0 0 3px rgba(37,211,102,.22)}
+    .site-top .hero__video-status{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--cyan);white-space:nowrap}
     .site-top .hero__halo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;pointer-events:none}
     .site-top .hero__halo::before{content:'';width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(0,180,216,.16),transparent 65%);filter:blur(50px)}
     .site-top .hero__arcs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:0;pointer-events:none;opacity:.55}
@@ -109,10 +115,14 @@
       .site-top .nav,.site-top .header__cta{display:none}
       .site-top .navbar__toggle{display:inline-flex;align-items:center;justify-content:center}
       .site-top .header{padding:14px 20px}
-      .site-top .hero{padding:48px 20px 56px}
-      .site-top .hero__inner{grid-template-columns:1fr;gap:36px}
-      .site-top .hero__visual{min-height:300px;order:-1}
+      .site-top .hero{padding:16px 20px 44px}
+      .site-top .hero__inner{grid-template-columns:1fr;gap:28px}
+      .site-top .hero__eyebrow{display:none}
+      .site-top .hero__visual{min-height:auto;order:-1}
       .site-top .hero__mark svg.aperture{width:260px;height:260px}
+      .site-top .hero__video-frame{max-width:none}
+      .site-top .hero__video-caption{padding:10px 12px;gap:4px 12px}
+      .site-top .hero__video-tag,.site-top .hero__video-status{font-size:10px}
       .site-top .hero__arcs svg{width:400px;height:400px}
       .site-top .hero__halo::before{width:300px;height:300px}
       .site-top .stats__inner{grid-template-columns:1fr;gap:16px}
@@ -206,16 +216,15 @@
         </div>
       </div>
       <div class="hero__visual">
-        <div class="hero__arcs">
-          <svg viewBox="0 0 600 600" fill="none" stroke="#94A3B8" stroke-width="1">
-            <circle cx="300" cy="300" r="290" stroke-opacity=".4"/>
-            <circle cx="300" cy="300" r="230" stroke-dasharray="2 8" stroke-opacity=".5"/>
-            <circle cx="300" cy="300" r="170" stroke-opacity=".35"/>
-          </svg>
-        </div>
         <div class="hero__halo"></div>
-        <div class="hero__mark">
-          <svg class="aperture" viewBox="0 0 100 100"><use href="#aperture"/></svg>
+        <div class="hero__video-frame">
+          <video class="hero__video" width="1280" height="720" autoplay muted loop playsinline preload="auto" poster="images/hero-manometro.webp">
+            <source src="videos/hero-manometro.mp4" type="video/mp4">
+          </video>
+          <div class="hero__video-caption">
+            <span class="hero__video-tag">Personalizável com sua logo</span>
+            <span class="hero__video-status">Classe A · ABNT</span>
+          </div>
         </div>
       </div>
     </div>
@@ -455,7 +464,7 @@
             <div class="product-card__content">
               <span class="product-card__category">${cat}</span>
               <h3 class="product-card__name">${p.nome}</h3>
-              <span class="product-card__specs">${summary}</span>
+              ${(window.eMan && window.eMan.specRows) ? window.eMan.specRows(p) : `<ul class="product-card__specs"><li><span class="product-card__spec-val">${summary}</span></li></ul>`}
               <button class="product-card__cta wa-btn" type="button" data-product="${p.nome}" data-specs="${summary}">Pedir Orçamento</button>
               <button class="product-card__datasheet" type="button" data-action="datasheet" data-id="${p.id}">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
