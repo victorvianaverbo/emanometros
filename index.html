@@ -10,6 +10,7 @@
   <meta name="theme-color" content="#FFFFFF">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="images/hero-manometro.webp" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
     /* Critical CSS — above-the-fold */
@@ -218,7 +219,7 @@
       <div class="hero__visual">
         <div class="hero__halo"></div>
         <div class="hero__video-frame">
-          <video class="hero__video" width="1280" height="720" autoplay muted loop playsinline preload="auto" poster="images/hero-manometro.webp">
+          <video class="hero__video" width="1280" height="720" autoplay muted loop playsinline preload="metadata" poster="images/hero-manometro.webp">
             <source src="videos/hero-manometro.mp4" type="video/mp4">
           </video>
           <div class="hero__video-caption">
