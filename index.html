@@ -3,13 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google tag (gtag.js) — Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18211286792"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18211286792');
+  </script>
   <title>Press Control — Instrumentação Industrial</title>
-  <meta name="description" content="Manômetros, manovacuômetros, vacuômetros e termômetros industriais com pronta entrega. Personalização com sua logo. Envio para todo Brasil.">
+  <meta name="description" content="Manômetros, manovacuômetros, vacuômetros e termômetros industriais com pronta entrega e envio para todo o Brasil. Atendimento técnico em Belo Horizonte/MG.">
+  <link rel="canonical" href="https://manometrospresscontrol.com.br/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Press Control">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Press Control — Manômetros e Instrumentação Industrial">
+  <meta property="og:description" content="Manômetros, manovacuômetros, vacuômetros e termômetros industriais com pronta entrega e envio para todo o Brasil.">
+  <meta property="og:url" content="https://manometrospresscontrol.com.br/">
+  <meta property="og:image" content="https://manometrospresscontrol.com.br/images/og-press-control.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Press Control — Manômetros e Instrumentação Industrial">
+  <meta name="twitter:description" content="Manômetros, manovacuômetros, vacuômetros e termômetros industriais com pronta entrega e envio para todo o Brasil.">
+  <meta name="twitter:image" content="https://manometrospresscontrol.com.br/images/og-press-control.jpg">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://manometrospresscontrol.com.br/#org","name":"Press Control","url":"https://manometrospresscontrol.com.br/","logo":"https://manometrospresscontrol.com.br/images/og-press-control.jpg","description":"Instrumentação industrial — manômetros, manovacuômetros, vacuômetros e termômetros — com pronta entrega para todo o Brasil.","email":"contato@presscontrol.com.br","telephone":"+553197113196","address":{"@type":"PostalAddress","streetAddress":"Rua 29 de Outubro, 271 - Alto dos Pinheiros","addressLocality":"Belo Horizonte","addressRegion":"MG","postalCode":"30530-060","addressCountry":"BR"},"areaServed":"BR","contactPoint":{"@type":"ContactPoint","telephone":"+553197113196","contactType":"sales","areaServed":"BR","availableLanguage":"Portuguese"}},{"@type":"WebSite","@id":"https://manometrospresscontrol.com.br/#website","url":"https://manometrospresscontrol.com.br/","name":"Press Control","inLanguage":"pt-BR","publisher":{"@id":"https://manometrospresscontrol.com.br/#org"}}]}</script>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="apple-touch-icon" href="favicon.svg">
   <meta name="theme-color" content="#FFFFFF">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="images/hero-manometro.webp" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
     /* Critical CSS — above-the-fold */
@@ -128,6 +150,28 @@
       .site-top .stats__inner{grid-template-columns:1fr;gap:16px}
       .site-top .stats{padding:40px 20px}
     }
+    @media(max-width:768px){
+      /* vídeo encosta nas bordas, sem moldura de card */
+      .site-top .hero{padding-top:0;padding-bottom:26px}
+      .site-top .hero__visual{width:100vw;margin-left:calc(50% - 50vw)}
+      .site-top .hero__video-frame{border:0;border-radius:0;box-shadow:none;max-width:none}
+      /* tarja maior e alinhada ao conteúdo */
+      .site-top .hero__video-caption{padding:14px 20px;gap:6px 14px}
+      .site-top .hero__video-tag,.site-top .hero__video-status{font-size:12px}
+      /* hero compacto: os 2 CTAs cabem na primeira dobra */
+      .site-top .hero__inner{gap:18px}
+      .site-top .hero__title{font-size:clamp(1.9rem,7.2vw,2.4rem);line-height:1.08;margin-bottom:12px}
+      .site-top .hero__sub{font-size:1rem;line-height:1.5;margin-bottom:18px}
+      .site-top .hero__ctas{gap:10px;margin-bottom:0}
+      /* dobra: stats mais compactos e harmônicos */
+      .site-top .stats{padding:26px 20px 34px}
+      .site-top .stats__inner{gap:12px}
+      .site-top .stat{padding:18px 20px;display:grid;grid-template-columns:auto 1fr;grid-template-areas:"icon num" "label label" "hint hint";column-gap:14px;row-gap:2px;align-items:center}
+      .site-top .stat__icon{grid-area:icon;width:38px;height:38px;margin-bottom:0}
+      .site-top .stat__num{grid-area:num;justify-self:start;font-size:2.1rem}
+      .site-top .stat__label{grid-area:label;margin-top:8px}
+      .site-top .stat__hint{grid-area:hint;margin-top:6px;padding-top:12px}
+    }
   </style>
   <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="style.css"></noscript>
@@ -178,7 +222,6 @@
         <a href="catalogo.html?categoria=manovacuometros">Manovacuômetros</a>
         <a href="catalogo.html?categoria=termometros">Termômetros</a>
         <a href="catalogo.html">Catálogo</a>
-        <a href="#sobre">Sobre</a>
       </nav>
       <div class="header__cta">
         <button class="btn-wpp wa-btn" data-msg="preciso de ajuda" type="button">
@@ -197,8 +240,8 @@
     <div class="hero__inner">
       <div class="hero__left">
         <div class="hero__eyebrow">Instrumentação Industrial · Catálogo 2026</div>
-        <h1 class="hero__title">Manômetros<br>com <em>sua marca</em><br>no mostrador.</h1>
-        <p class="hero__sub">Catálogo completo de manômetros, manovacuômetros, vacuômetros e termômetros industriais. <strong>Personalização com sua logo</strong>, pronta entrega e envio rápido para todo Brasil.</p>
+        <h1 class="hero__title">Manômetros e <em>Instrumentação Industrial</em></h1>
+        <p class="hero__sub">Catálogo completo de manômetros, manovacuômetros, vacuômetros e termômetros industriais.</p>
         <div class="hero__ctas">
           <a href="catalogo.html" class="btn btn--primary">
             Ver Catálogo Completo
@@ -208,11 +251,6 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 0 0 .603.603l5.822-1.458A11.948 11.948 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
             Falar com Especialista
           </button>
-        </div>
-        <div class="hero__notes">
-          <span class="hero__note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Envio em 24h</span>
-          <span class="hero__note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> NF-e Automática</span>
-          <span class="hero__note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Frete Grátis MG · acima R$300</span>
         </div>
       </div>
       <div class="hero__visual">
@@ -301,7 +339,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 00.603.603l5.822-1.458A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
             Solicitar Orçamento
           </button>
-          <span class="cta-b2b__phone">ou ligue: (31) 9571-3196</span>
+          <span class="cta-b2b__phone">ou ligue: (31) 9711-3196</span>
         </div>
       </div>
       <div class="cta-b2b__right">
@@ -336,22 +374,22 @@
   </div></section>
 
   <!-- BLOG -->
-  <section class="blog"><div class="blog__container">
+  <section class="blog" id="blog"><div class="blog__container">
     <div class="blog__header"><span class="section-label">Conteúdo Técnico</span><h2 class="section-title">Artigos para quem trabalha <span class="section-title--accent">com instrumentação</span></h2></div>
     <div class="blog__grid">
-      <article class="blog__card"><div class="blog__card-image"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div><div class="blog__card-content"><span class="blog__card-tag">Guia Técnico</span><h3 class="blog__card-title">Como Escolher o Manômetro Certo para Sua Aplicação</h3><p class="blog__card-excerpt">Critérios técnicos: diâmetro, escala, material, conexão e classe de precisão.</p><a href="#" class="blog__card-link">Ler artigo →</a></div></article>
-      <article class="blog__card"><div class="blog__card-image"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div><div class="blog__card-content"><span class="blog__card-tag">Manutenção</span><h3 class="blog__card-title">Manômetro com Glicerina: Quando Usar e Por Quê</h3><p class="blog__card-excerpt">Diferença entre secos e com glicerina, e em quais aplicações cada tipo é indicado.</p><a href="#" class="blog__card-link">Ler artigo →</a></div></article>
-      <article class="blog__card"><div class="blog__card-image"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div><div class="blog__card-content"><span class="blog__card-tag">Normas</span><h3 class="blog__card-title">NR-13: O que Sua Empresa Precisa Saber</h3><p class="blog__card-excerpt">Exigências legais para vasos de pressão e como manter a instrumentação em conformidade.</p><a href="#" class="blog__card-link">Ler artigo →</a></div></article>
+      <article class="blog__card"><div class="blog__card-image"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div><div class="blog__card-content"><span class="blog__card-tag">Guia Técnico</span><h3 class="blog__card-title">Como Escolher o Manômetro Certo para Sua Aplicação</h3><p class="blog__card-excerpt">Critérios técnicos: diâmetro, escala, material, conexão e classe de precisão.</p><a href="blog-escolher-manometro.html" class="blog__card-link">Ler artigo →</a></div></article>
+      <article class="blog__card"><div class="blog__card-image"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div><div class="blog__card-content"><span class="blog__card-tag">Manutenção</span><h3 class="blog__card-title">Manômetro com Glicerina: Quando Usar e Por Quê</h3><p class="blog__card-excerpt">Diferença entre secos e com glicerina, e em quais aplicações cada tipo é indicado.</p><a href="blog-manometro-glicerina.html" class="blog__card-link">Ler artigo →</a></div></article>
+      <article class="blog__card"><div class="blog__card-image"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div><div class="blog__card-content"><span class="blog__card-tag">Normas</span><h3 class="blog__card-title">NR-13: O que Sua Empresa Precisa Saber</h3><p class="blog__card-excerpt">Exigências legais para vasos de pressão e como manter a instrumentação em conformidade.</p><a href="blog-nr13.html" class="blog__card-link">Ler artigo →</a></div></article>
     </div>
   </div></section>
 
   <!-- FOOTER -->
   <footer class="footer" id="sobre"><div class="footer__main"><div class="footer__container">
     <div class="footer__col footer__col--about"><a href="#" class="pc-logo footer__logo"><svg class="pc-mark" width="28" height="28" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" fill="none"><circle cx="50" cy="50" r="46" stroke-width="3.5"/><g stroke-linecap="round"><line x1="50" y1="20" x2="50" y2="10" stroke-width="2.4"/><line x1="59.06" y1="16.19" x2="60.35" y2="11.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="67.5" y1="19.69" x2="70" y2="15.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="73.33" y1="26.67" x2="78.28" y2="21.72" stroke-width="1.4" stroke-opacity=".85"/><line x1="80.31" y1="32.5" x2="84.64" y2="30" stroke-width="1.4" stroke-opacity=".45"/><line x1="83.81" y1="40.94" x2="88.64" y2="39.65" stroke-width="1.4" stroke-opacity=".45"/><line x1="80" y1="50" x2="90" y2="50" stroke-width="2.4"/><line x1="83.81" y1="59.06" x2="88.64" y2="60.35" stroke-width="1.4" stroke-opacity=".45"/><line x1="80.31" y1="67.5" x2="84.64" y2="70" stroke-width="1.4" stroke-opacity=".45"/><line x1="73.33" y1="73.33" x2="78.28" y2="78.28" stroke-width="1.4" stroke-opacity=".85"/><line x1="67.5" y1="80.31" x2="70" y2="84.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="59.06" y1="83.81" x2="60.35" y2="88.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="50" y1="80" x2="50" y2="90" stroke-width="2.4"/><line x1="40.94" y1="83.81" x2="39.65" y2="88.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="32.5" y1="80.31" x2="30" y2="84.64" stroke-width="1.4" stroke-opacity=".45"/><line x1="26.67" y1="73.33" x2="21.72" y2="78.28" stroke-width="1.4" stroke-opacity=".85"/><line x1="19.69" y1="67.5" x2="15.36" y2="70" stroke-width="1.4" stroke-opacity=".45"/><line x1="16.19" y1="59.06" x2="11.36" y2="60.35" stroke-width="1.4" stroke-opacity=".45"/><line x1="20" y1="50" x2="10" y2="50" stroke-width="2.4"/><line x1="16.19" y1="40.94" x2="11.36" y2="39.65" stroke-width="1.4" stroke-opacity=".45"/><line x1="19.69" y1="32.5" x2="15.36" y2="30" stroke-width="1.4" stroke-opacity=".45"/><line x1="26.67" y1="26.67" x2="21.72" y2="21.72" stroke-width="1.4" stroke-opacity=".85"/><line x1="32.5" y1="19.69" x2="30" y2="15.36" stroke-width="1.4" stroke-opacity=".45"/><line x1="40.94" y1="16.19" x2="39.65" y2="11.36" stroke-width="1.4" stroke-opacity=".45"/></g><line class="pc-mark__needle" x1="44.8" y1="53" x2="74.25" y2="36" stroke-width="4" stroke-linecap="round"/></g><circle cx="50" cy="50" r="4" fill="currentColor"/><circle cx="50" cy="50" r="1.6" fill="#F8FAFC"/></svg><span class="pc-wordmark">Press Control</span></a><p class="footer__about-text">Instrumentação industrial com precisão, qualidade e entrega rápida para sua operação.</p></div>
-    <div class="footer__col"><h4 class="footer__col-title">Produtos</h4><ul class="footer__links"><li><a href="#">Manômetros</a></li><li><a href="#">Manovacuômetros</a></li><li><a href="#">Vacuômetros</a></li><li><a href="#">Termômetros</a></li><li><a href="#">Acessórios</a></li></ul></div>
-    <div class="footer__col"><h4 class="footer__col-title">Institucional</h4><ul class="footer__links"><li><a href="#">Sobre Nós</a></li><li><a href="#">Blog</a></li><li><a href="#">Contato</a></li><li><a href="#">Política de Trocas</a></li></ul></div>
-    <div class="footer__col"><h4 class="footer__col-title">Contato</h4><div class="footer__contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>(31) 9571-3196</span></div><div class="footer__contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><a href="mailto:contato@presscontrol.com.br">contato@presscontrol.com.br</a></div><div class="footer__contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Rua Platina, 693 - Prado, BH</span></div><div class="footer__contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Seg-Sex 8h-18h | Sáb 8h-12h</span></div></div>
-  </div></div><div class="footer__bar"><div class="footer__bar-container"><span class="footer__copyright">© 2026 Press Control. Todos os direitos reservados.</span><div class="footer__social"><a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a><a href="#" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 00.603.603l5.822-1.458A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a></div></div></div></footer>
+    <div class="footer__col"><h4 class="footer__col-title">Produtos</h4><ul class="footer__links"><li><a href="catalogo.html?categoria=manometros">Manômetros</a></li><li><a href="catalogo.html?categoria=manovacuometros">Manovacuômetros</a></li><li><a href="catalogo.html?categoria=vacuometros">Vacuômetros</a></li><li><a href="catalogo.html?categoria=termometros">Termômetros</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__col-title">Institucional</h4><ul class="footer__links"><li><a href="catalogo.html">Catálogo Completo</a></li><li><a href="index.html#blog">Blog</a></li></ul></div>
+    <div class="footer__col"><h4 class="footer__col-title">Contato</h4><div class="footer__contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>(31) 9711-3196</span></div><div class="footer__contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><a href="mailto:contato@presscontrol.com.br">contato@presscontrol.com.br</a></div><div class="footer__contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Rua 29 de Outubro, 271 - Alto dos Pinheiros, BH</span></div><div class="footer__contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Seg-Sex 8h-18h | Sáb 8h-12h</span></div></div>
+  </div></div><div class="footer__bar"><div class="footer__bar-container"><span class="footer__copyright">© 2026 Press Control. Todos os direitos reservados.</span><div class="footer__social"><a href="https://wa.me/553197113196" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 00.603.603l5.822-1.458A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a></div></div></div></footer>
 
   <!-- MOBILE MENU DRAWER -->
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
@@ -367,11 +405,10 @@
         <a href="catalogo.html?categoria=manovacuometros">Manovacuômetros</a>
         <a href="catalogo.html?categoria=termometros">Termômetros</a>
         <a href="catalogo.html">Catálogo Completo</a>
-        <a href="#sobre">Sobre</a>
       </nav>
       <div class="mobile-menu__footer">
         <button class="btn btn--whatsapp wa-btn" data-msg="preciso de ajuda" type="button">Falar no WhatsApp</button>
-        <a href="tel:+553195713196" class="mobile-menu__phone">(31) 9571-3196</a>
+        <a href="tel:+553197113196" class="mobile-menu__phone">(31) 9711-3196</a>
       </div>
     </aside>
   </div>

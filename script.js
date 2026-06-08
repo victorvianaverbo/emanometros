@@ -1,5 +1,28 @@
 /* Press Control — Script Principal */
-const WA_NUMBER = '553195713196';
+const WA_NUMBER = '553197113196';
+
+/* ── Supabase — captura de leads ──
+   anon key é pública por design (protegida por RLS: anon só insere, não lê). */
+const SUPABASE_URL = 'https://wibecdbznwzerenpnibc.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpYmVjZGJ6bnd6ZXJlbnBuaWJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA5MjI0MTQsImV4cCI6MjA5NjQ5ODQxNH0.oXWPZg7gYh5Xf7slDasU8Quanh_KNdYBnWpfvpi_RSk';
+
+/* Grava o lead no Supabase. Fire-and-forget com keepalive: não bloqueia
+   o redirect pro WhatsApp e sobrevive à navegação da aba. */
+function salvarLead(lead) {
+  try {
+    fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+      method: 'POST',
+      keepalive: true,
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal',
+      },
+      body: JSON.stringify(lead),
+    }).catch(() => {});
+  } catch (_) { /* nunca quebra o fluxo do usuário */ }
+}
 
 const CAT_LABEL = {
   manometros: 'Manômetros',
@@ -130,11 +153,30 @@ const waState = {
 
     let text;
     if (product) {
-      text = `Olá, sou ${name} (${phone}), tenho interesse no ${product} (${specs}). Qual o prazo e valor?`;
+      text = `Olá, sou ${name}, tenho interesse no ${product} (${specs}). Qual o prazo e valor?`;
     } else if (msg) {
-      text = `Olá, sou ${name} (${phone}), ${msg}`;
+      text = `Olá, sou ${name}, ${msg}`;
     } else {
-      text = `Olá, sou ${name} (${phone}), preciso de ajuda`;
+      text = `Olá, sou ${name}, preciso de ajuda`;
+    }
+
+    // Supabase — grava o lead antes de redirecionar (não perde se não enviar no WhatsApp)
+    salvarLead({
+      nome: name,
+      telefone: phone,
+      produto: product || null,
+      specs: specs || null,
+      mensagem: msg || null,
+      pagina: location.pathname + location.search,
+    });
+
+    // Google Ads — conversão de lead (envio do formulário)
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18211286792/9hsSCOvQzLgcEIje6OtD',
+        'value': 1.0,
+        'currency': 'BRL'
+      });
     }
 
     const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;

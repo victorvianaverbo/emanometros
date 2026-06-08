@@ -12,6 +12,7 @@ Rodar:
 
 import json
 from pathlib import Path
+from urllib.parse import quote
 
 from reportlab.lib.colors import HexColor, white
 from reportlab.lib.pagesizes import A4
@@ -103,9 +104,10 @@ SPECS_RIGHT = [
 
 COMPANY = "Press Control"
 ADDRESS = "Rua Platina, 693 - Prado, Belo Horizonte/MG"
-PHONE = "(31) 9571-3196"
+PHONE = "(31) 9711-3196"
+WA_NUMBER = "553197113196"
 EMAIL = "contato@presscontrol.com.br"
-SITE = "www.presscontrol.com.br"
+SITE = "manometrospresscontrol.com.br"
 INSTAGRAM = "@presscontrol"
 
 
@@ -383,137 +385,56 @@ def draw_spec_icon(c, key, x, y, size, color):
 # ---------------------------------------------------------------------------
 def page_cover(c):
     width, height = A4
-
-    # Fundo navy escuro
     c.setFillColor(NAVY)
     c.rect(0, 0, width, height, fill=1, stroke=0)
 
-    # Gradient simulado via blocos sutis (linhas finas horizontais ao topo)
-    for i in range(0, 60):
-        alpha = 1 - i / 60
-        from reportlab.lib.colors import Color
-        c.setFillColor(Color(0.06, 0.14, 0.23, alpha=alpha * 0.4))
-        c.rect(0, height - 50 * mm - i * 1.0, width, 1.0, fill=1, stroke=0)
+    # glow cyan discreto no topo-direita (sutil)
+    c.saveState()
+    from reportlab.lib.colors import Color
+    for i in range(16):
+        rr = 130 * mm - i * 7 * mm
+        c.setFillColor(Color(0, 0.706, 0.847, alpha=0.015))
+        c.circle(width - 26 * mm, height - 26 * mm, rr, fill=1, stroke=0)
+    c.restoreState()
 
-    # Pattern: linhas verticais finas (tipo grade industrial) na lateral direita
-    c.setStrokeColor(_with_alpha(CYAN, 0.10))
-    c.setLineWidth(0.4)
-    for i in range(20):
-        gx = width - 95 * mm + i * 5 * mm
-        c.line(gx, 22 * mm, gx, height - 22 * mm)
-
-    # Marca d'agua: aperture mark atras da foto do manometro (canto inferior direito)
-    draw_aperture_mark(
-        c, width - 62 * mm, 76 * mm, 170 * mm,
-        body_color=_with_alpha(CYAN, 0.05),
-        needle_color=_with_alpha(CYAN, 0.08),
-    )
-
-    # ─── Top band com logo ───
-    draw_logo(c, 20 * mm, height - 22 * mm, size=14)
-    c.setFillColor(_with_alpha(white, 0.55))
-    c.setFont(Fonts.body, 8.5)
-    c.drawRightString(width - 20 * mm, height - 18.5 * mm, "INSTRUMENTAÇÃO INDUSTRIAL")
-    c.setFillColor(_with_alpha(white, 0.35))
-    c.drawRightString(width - 20 * mm, height - 23 * mm, "BELO HORIZONTE  ·  MG  ·  BRASIL")
-
-    # Linha cyan separadora
-    c.setFillColor(CYAN)
-    c.rect(20 * mm, height - 28 * mm, width - 40 * mm, 0.4, fill=1, stroke=0)
-
-    # ─── Badge "EDIÇÃO 2026" ───
-    badge_y = height - 50 * mm
-    badge_w = 52 * mm
-    c.setFillColor(_with_alpha(CYAN, 0.12))
-    c.setStrokeColor(_with_alpha(CYAN, 0.35))
-    c.setLineWidth(0.6)
-    c.roundRect(20 * mm, badge_y, badge_w, 7 * mm, 3.5 * mm, fill=1, stroke=1)
-    c.setFillColor(CYAN)
-    c.circle(24 * mm, badge_y + 3.5 * mm, 1.1 * mm, fill=1, stroke=0)
-    c.setFillColor(CYAN)
-    c.setFont(Fonts.body_bold, 8)
-    c.drawString(28.5 * mm, badge_y + 2.4 * mm, "EDIÇÃO 2026  ·  CATÁLOGO")
-
-    # ─── Título principal: CATÁLOGO / DE / PRODUTOS ───
-    c.setFillColor(white)
-    c.setFont(Fonts.display_xbold, 68)
-    c.drawString(20 * mm, height - 78 * mm, "Catálogo")
-
-    # gradiente simulado: desenhamos "de Produtos" em duas cores (cyan->electric)
-    c.setFillColor(ELECTRIC)
-    c.setFont(Fonts.display_xbold, 68)
-    c.drawString(20 * mm, height - 108 * mm, "de Produtos")
-
-    # Subtítulo
-    c.setFillColor(_with_alpha(white, 0.75))
-    c.setFont(Fonts.body, 12)
-    c.drawString(20 * mm, height - 122 * mm,
-                 "Manômetros · Manovacuômetros · Vacuômetros · Termômetros")
-    c.setFillColor(_with_alpha(white, 0.45))
-    c.setFont(Fonts.body, 10)
-    c.drawString(20 * mm, height - 130 * mm,
-                 "Pronta entrega · Personalização com sua marca · Envio para todo Brasil")
-
-    # ─── Imagem do manometro (canto inferior direito, fundo navy) ───
-    hero = HERO_COVER if HERO_COVER.exists() else HERO_IMAGE
-    if hero.exists():
-        img_w = 78 * mm
-        img_h = 92 * mm
-        img_x = width - img_w - 22 * mm
-        img_y = 32 * mm
-        # halo cyan suave atrás da foto
-        c.saveState()
-        from reportlab.lib.colors import Color
-        for i in range(10):
-            rr = (max(img_w, img_h) / 2 + 22) - i * 2.4
-            c.setFillColor(Color(0, 0.706, 0.847, alpha=0.03))
-            c.circle(img_x + img_w / 2, img_y + img_h / 2, rr, fill=1, stroke=0)
-        c.restoreState()
-        c.drawImage(
-            str(hero),
-            img_x, img_y, img_w, img_h,
-            preserveAspectRatio=True,
-            mask="auto",
-        )
-
-    # ─── Lista de categorias com índice tipo industrial (esquerda baixa) ───
-    cats = [
-        ("01", "MANÔMETROS"),
-        ("02", "MANOVACUÔMETROS"),
-        ("03", "VACUÔMETROS"),
-        ("04", "TERMÔMETROS"),
-    ]
-    cat_y = 100 * mm
-    c.setFillColor(_with_alpha(white, 0.5))
-    c.setFont(Fonts.body_bold, 7.5)
-    c.drawString(20 * mm, cat_y + 10, "CATEGORIAS  /  CONTEÚDO")
-    c.setStrokeColor(_with_alpha(white, 0.15))
-    c.setLineWidth(0.4)
-    c.line(20 * mm, cat_y + 5, 95 * mm, cat_y + 5)
-    for i, (num, name) in enumerate(cats):
-        y = cat_y - 5 - i * 9 * mm
-        c.setFillColor(CYAN)
-        c.setFont(Fonts.body_bold, 9)
-        c.drawString(20 * mm, y, num)
-        c.setFillColor(white)
-        c.setFont(Fonts.display_bold, 10.5)
-        c.drawString(31 * mm, y, name)
-
-    # ─── Faixa inferior com endereço/contato ───
-    c.setFillColor(NAVY_LIGHT)
-    c.rect(0, 0, width, 22 * mm, fill=1, stroke=0)
-    c.setFillColor(CYAN)
-    c.rect(0, 22 * mm, width, 0.4, fill=1, stroke=0)
-    c.setFillColor(CYAN)
+    # Logo topo-esquerda
+    draw_logo(c, 20 * mm, height - 24 * mm, size=15)
+    # Edicao topo-direita
+    c.setFillColor(_with_alpha(CYAN, 0.85))
     c.setFont(Fonts.body_bold, 8.5)
-    c.drawString(20 * mm, 13.5 * mm, ADDRESS)
-    c.setFillColor(_with_alpha(white, 0.65))
-    c.setFont(Fonts.body, 8.5)
-    c.drawString(20 * mm, 7 * mm, f"{PHONE}  ·  {EMAIL}  ·  {SITE}")
-    # Direita: ano grande
-    c.setFillColor(_with_alpha(CYAN, 0.7))
-    c.setFont(Fonts.display_xbold, 18)
-    c.drawRightString(width - 20 * mm, 8.5 * mm, "2026")
+    c.drawRightString(width - 20 * mm, height - 21 * mm, "2026  \u00b7  EDI\u00c7\u00c3O 01")
+
+    # Label
+    c.setFillColor(_with_alpha(white, 0.5))
+    c.setFont(Fonts.body_bold, 9)
+    c.drawString(20 * mm, 150 * mm, "CAT\u00c1LOGO DE PRODUTOS")
+    c.setFillColor(CYAN)
+    c.rect(20 * mm, 145 * mm, 16 * mm, 0.8, fill=1, stroke=0)
+
+    # Titulo grande (auto-fit), 3 linhas, ultima em cyan
+    lines = ["Instrumenta\u00e7\u00e3o", "de press\u00e3o, v\u00e1cuo e", "temperatura."]
+    fs = 46
+    while max(c.stringWidth(l, Fonts.display_xbold, fs) for l in lines) > width - 44 * mm and fs > 24:
+        fs -= 1
+    lh = fs * 1.18
+    base_y = 96 * mm
+    c.setFont(Fonts.display_xbold, fs)
+    c.setFillColor(white)
+    c.drawString(20 * mm, base_y + 2 * lh, lines[0])
+    c.drawString(20 * mm, base_y + lh, lines[1])
+    c.setFillColor(CYAN)
+    c.drawString(20 * mm, base_y, lines[2])
+
+    # Subtitulo
+    c.setFillColor(_with_alpha(white, 0.7))
+    c.setFont(Fonts.body, 11)
+    c.drawString(20 * mm, base_y - 12 * mm,
+                 "Man\u00f4metros, manovacu\u00f4metros, vacu\u00f4metros e term\u00f4metros industriais.")
+
+    # Rodape 1 linha
+    c.setFillColor(_with_alpha(white, 0.45))
+    c.setFont(Fonts.body, 9)
+    c.drawString(20 * mm, 20 * mm, f"{SITE}  \u00b7  {PHONE}  \u00b7  Belo Horizonte / MG")
 
     c.showPage()
 
@@ -647,78 +568,49 @@ def page_index(c, products, product_pages):
 
     c.setFillColor(ELECTRIC)
     c.setFont(Fonts.body_bold, 8.5)
-    c.drawString(20 * mm, height - 26 * mm, "SUMÁRIO")
+    c.drawString(20 * mm, height - 30 * mm, "SUM\u00c1RIO")
     c.setFillColor(CYAN)
-    c.rect(20 * mm, height - 29 * mm, 14 * mm, 0.6, fill=1, stroke=0)
+    c.rect(20 * mm, height - 33 * mm, 14 * mm, 0.6, fill=1, stroke=0)
     c.setFillColor(SLATE_900)
-    c.setFont(Fonts.display_xbold, 30)
-    c.drawString(20 * mm, height - 42 * mm, "Índice")
+    c.setFont(Fonts.display_xbold, 32)
+    c.drawString(20 * mm, height - 46 * mm, "Quatro fam\u00edlias.")
     c.setFillColor(SLATE_600)
-    c.setFont(Fonts.body, 11)
-    c.drawString(20 * mm, height - 50 * mm, f"{len(products)} produtos organizados por categoria")
+    c.setFont(Fonts.body, 12)
+    c.drawString(20 * mm, height - 54 * mm, "Um instrumento para cada opera\u00e7\u00e3o.")
 
     groups = {}
     for p in products:
         groups.setdefault(p["categoria"], []).append(p)
+    descr = {
+        "manometros": "press\u00e3o positiva",
+        "manovacuometros": "press\u00e3o + v\u00e1cuo",
+        "vacuometros": "press\u00e3o negativa",
+        "termometros": "temperatura",
+    }
+    cats = [k for k in ("manometros", "manovacuometros", "vacuometros", "termometros") if groups.get(k)]
 
-    y = height - 65 * mm
-
-    col_x = [20 * mm, width / 2 + 4 * mm]
-    col_widths = [width / 2 - 28 * mm] * 2
-    col = 0
-    y_start_row = y
-
-    for cat in ("manometros", "manovacuometros", "vacuometros", "termometros"):
-        items = groups.get(cat, [])
-        if not items:
-            continue
-        if col == 1:
-            y = max(y, y_start_row)
-            col = 0
-            y_start_row = y
+    y = height - 88 * mm
+    row_h = 33 * mm
+    for cat in cats:
+        items = groups[cat]
         accent = cat_color(cat)
-        # marcador da categoria na cor do acento
+        opener = product_pages.get(items[0]["id"], 5) - 1
         c.setFillColor(accent)
-        c.rect(col_x[col], y - 0.5, 2.4 * mm, 2.4 * mm, fill=1, stroke=0)
-        c.setFillColor(accent)
-        c.setFont(Fonts.display_bold, 11.5)
-        c.drawString(col_x[col] + 4 * mm, y, CAT_LABEL[cat])
+        c.setFont(Fonts.display_xbold, 30)
+        c.drawString(20 * mm, y, CAT_NUM[cat])
+        c.setFillColor(SLATE_900)
+        c.setFont(Fonts.display_bold, 20)
+        c.drawString(42 * mm, y, CAT_LABEL[cat].title())
+        c.setFillColor(SLATE_600)
+        c.setFont(Fonts.body, 11)
+        c.drawString(42 * mm, y - 8 * mm, f"{len(items)} produtos  \u00b7  {descr.get(cat, '')}")
         c.setFillColor(SLATE_400)
-        c.setFont(Fonts.body, 9)
-        c.drawRightString(col_x[col] + col_widths[col], y, f"{len(items)} produtos")
-        y -= 5
-        c.setStrokeColor(accent)
-        c.setLineWidth(0.8)
-        c.line(col_x[col], y, col_x[col] + col_widths[col], y)
-        y -= 9
-
-        c.setFont(Fonts.body, 8.6)
-        for p in items:
-            if y < 25 * mm:
-                if col == 0:
-                    col = 1
-                    y = y_start_row
-                else:
-                    draw_footer_strip(c, page_num=3)
-                    c.showPage()
-                    c.setFillColor(white)
-                    c.rect(0, 0, width, height, fill=1, stroke=0)
-                    draw_header_strip(c)
-                    y = height - 30 * mm
-                    y_start_row = y
-                    col = 0
-            c.setFillColor(SLATE_900)
-            name = p["nome"]
-            max_name_w = col_widths[col] - 15 * mm
-            if c.stringWidth(name, Fonts.body, 8.6) > max_name_w:
-                while c.stringWidth(name + "…", Fonts.body, 8.6) > max_name_w and len(name) > 8:
-                    name = name[:-1]
-                name = name + "…"
-            c.drawString(col_x[col], y, name)
-            c.setFillColor(SLATE_400)
-            c.drawRightString(col_x[col] + col_widths[col], y, f"pág. {product_pages.get(p['id'], '—')}")
-            y -= 11
-        y -= 8
+        c.setFont(Fonts.body, 11)
+        c.drawRightString(width - 20 * mm, y, f"p. {opener:02d}")
+        c.setStrokeColor(SLATE_200)
+        c.setLineWidth(0.5)
+        c.line(20 * mm, y - 15 * mm, width - 20 * mm, y - 15 * mm)
+        y -= row_h
 
     draw_footer_strip(c, page_num=3)
     c.showPage()
@@ -861,6 +753,9 @@ def page_product(c, product, page_num, total_pages):
     c.setFillColor(white)
     c.setFont(Fonts.body_bold, 10)
     c.drawCentredString(width / 2, cta_y + 3 * mm, f"Orçamento via WhatsApp  ·  {PHONE}  ·  {EMAIL}")
+    _wa = "https://wa.me/" + WA_NUMBER + "?text=" + quote(
+        f"Olá! Tenho interesse no {product['nome']}. Qual o prazo e valor?")
+    c.linkURL(_wa, (20 * mm, cta_y, width - 20 * mm, cta_y + 9 * mm), relative=0)
 
     draw_footer_strip(c, page_num=page_num, total_pages=total_pages)
     c.showPage()
@@ -962,6 +857,9 @@ def page_back(c):
     c.setStrokeColor(_with_alpha(CYAN, 0.25))
     c.setLineWidth(0.6)
     c.roundRect(20 * mm, box_y, width - 40 * mm, box_h, 4 * mm, fill=1, stroke=1)
+    c.linkURL("https://wa.me/" + WA_NUMBER + "?text=" + quote(
+        "Olá! Vi o catálogo da Press Control e gostaria de um orçamento."),
+        (20 * mm, box_y, width - 20 * mm, box_y + box_h), relative=0)
     c.setFillColor(CYAN)
     c.rect(20 * mm, box_y, 1.6 * mm, box_h, fill=1, stroke=0)
 
@@ -969,7 +867,7 @@ def page_back(c):
     info_grid = [
         # (label, value, full_row?)
         [("WHATSAPP", PHONE, False), ("EMAIL", EMAIL, False)],
-        [("SITE", SITE, False), ("INSTAGRAM", INSTAGRAM, False)],
+        [("SITE", SITE, False)],
         [("ENDEREÇO", ADDRESS, True)],
         [("ATENDIMENTO", "Seg–Sex 8h–18h  ·  Sáb 8h–12h", True)],
     ]
