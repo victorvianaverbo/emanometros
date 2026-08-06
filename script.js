@@ -4,7 +4,7 @@ const WA_NUMBER = '553197113196';
 /* ── Planilha Google — captura de leads ──
    Apps Script publicado como app da web (código em tools/leads-planilha.gs).
    A URL é pública, mas só grava linhas: não lê nada da planilha. */
-const WEBHOOK_PLANILHA = '';
+const WEBHOOK_PLANILHA = 'https://script.google.com/macros/s/AKfycbyD8v0_ErC6CrS13xqUktBqQcvN5U_1SUztUX8CPUnOy1GuqpJTYLXk0BIa5yqsxWzcig/exec';
 
 /* Grava o lead na planilha. Fire-and-forget: não bloqueia o redirect pro
    WhatsApp. sendBeacon é entregue mesmo com a aba perdendo o foco; fetch com
@@ -165,7 +165,7 @@ const waState = {
       text = `Olá, sou ${name}, preciso de ajuda`;
     }
 
-    // Supabase — grava o lead antes de redirecionar (não perde se não enviar no WhatsApp)
+    // Planilha — grava o lead antes de redirecionar (não perde se não enviar no WhatsApp)
     salvarLead({
       nome: name,
       telefone: phone,
