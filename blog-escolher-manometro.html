@@ -52,6 +52,9 @@
     .site-top .btn-wpp{display:inline-flex;align-items:center;gap:9px;background:var(--whatsapp);color:#fff;font-weight:700;font-size:14px;padding:11px 22px;border-radius:100px;transition:transform .2s,box-shadow .2s,background .2s;box-shadow:0 4px 16px rgba(37,211,102,.22)}
     .site-top .btn-wpp:hover{background:var(--whatsapp-dark);transform:translateY(-1px)}
     .site-top .btn-wpp svg{width:16px;height:16px}
+    .site-top .btn-email{display:inline-flex;align-items:center;gap:9px;background:var(--cyan);color:#fff;font-weight:700;font-size:14px;padding:11px 22px;border-radius:100px;transition:transform .2s,box-shadow .2s,background .2s;box-shadow:0 4px 16px rgba(0,180,216,.22);text-decoration:none}
+    .site-top .btn-email:hover{background:#0099b8;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,180,216,.32)}
+    .site-top .btn-email svg{width:16px;height:16px;flex-shrink:0}
     .site-top .navbar__toggle{display:none;color:var(--navy);padding:8px;background:transparent;border:0;border-radius:8px}
     .article-hero{background:radial-gradient(ellipse at 50% 0%,#fff 0%,var(--slate-50) 55%,var(--slate-100) 100%);padding:60px 0 40px;border-bottom:1px solid var(--slate-200);position:relative;overflow:hidden}
     .article-hero__container{max-width:760px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
@@ -60,8 +63,8 @@
     .article-hero__meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem;color:var(--slate-600);font-weight:500}
     @media(max-width:1100px){.site-top .nav,.site-top .header__cta{display:none}.site-top .navbar__toggle{display:inline-flex;align-items:center;justify-content:center}.site-top .header{padding:14px 20px}.article-hero{padding:34px 0 26px}.article-hero__container{padding:0 20px}}
   </style>
-  <link rel="stylesheet" href="style.css?v=20260608">
-  <script src="script.js?v=20260608" defer></script>
+  <link rel="stylesheet" href="style.css?v=20260806">
+  <script src="script.js?v=20260806" defer></script>
 </head>
 <body class="home-light">
 
@@ -80,7 +83,7 @@
       <a href="catalogo.html?categoria=termometros">Termômetros</a>
       <a href="catalogo.html">Catálogo</a>
     </nav>
-    <div class="header__cta"><button class="btn-wpp wa-btn" data-msg="preciso de ajuda" type="button"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 0 0 .603.603l5.822-1.458A11.948 11.948 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg> Fale Conosco</button></div>
+    <div class="header__cta"><button class="btn-wpp wa-btn" data-msg="preciso de ajuda" type="button"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 0 0 .603.603l5.822-1.458A11.948 11.948 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg> Fale Conosco</button><a class="btn-email" href="mailto:contato@manometrospresscontrol.com.br"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg> Cotação por E-mail</a></div>
     <button class="navbar__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button>
   </div></header>
   </div>
@@ -140,7 +143,7 @@
       <div class="footer__contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Rua 29 de Outubro, 271 - Alto dos Pinheiros, BH</span></div>
       <div class="footer__contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Seg-Sex 8h-18h | Sáb 8h-12h</span></div>
     </div>
-  </div></div><div class="footer__bar"><div class="footer__bar-container"><span class="footer__copyright">© 2026 Press Control. Todos os direitos reservados.</span><div class="footer__social"><a href="https://wa.me/553197113196" aria-label="WhatsApp" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 00.603.603l5.822-1.458A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a></div></div></div></footer>
+  </div></div><div class="footer__bar"><div class="footer__bar-container"><span class="footer__copyright">© 2026 Press Control. Todos os direitos reservados.</span><div class="footer__social"><a class="wa-btn" data-msg="preciso de ajuda" href="https://wa.me/553197113196" aria-label="WhatsApp" target="_blank" rel="noopener"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 00.603.603l5.822-1.458A11.948 11.948 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a></div></div></div></footer>
 
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true"><div class="mobile-menu__backdrop"></div><aside class="mobile-menu__panel">
     <div class="mobile-menu__header"><a href="index.html" class="pc-logo navbar__logo"><svg class="pc-mark" width="28" height="28" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" fill="none"><circle cx="50" cy="50" r="46" stroke-width="3.5"/><g stroke-linecap="round"><line x1="50" y1="20" x2="50" y2="10" stroke-width="2.4"/><line x1="80" y1="50" x2="90" y2="50" stroke-width="2.4"/><line x1="50" y1="80" x2="50" y2="90" stroke-width="2.4"/><line x1="20" y1="50" x2="10" y2="50" stroke-width="2.4"/></g><line class="pc-mark__needle" x1="44.8" y1="53" x2="74.25" y2="36" stroke-width="4" stroke-linecap="round"/></g><circle cx="50" cy="50" r="4" fill="currentColor"/><circle cx="50" cy="50" r="1.6" fill="#F8FAFC"/></svg><span class="pc-wordmark">Press Control</span></a><button class="mobile-menu__close" type="button" aria-label="Fechar menu">&times;</button></div>

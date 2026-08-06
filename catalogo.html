@@ -55,6 +55,9 @@
     .site-top .btn-wpp{display:inline-flex;align-items:center;gap:9px;background:var(--whatsapp);color:#fff;font-weight:700;font-size:14px;padding:11px 22px;border-radius:100px;transition:transform .2s,box-shadow .2s,background .2s;box-shadow:0 4px 16px rgba(37,211,102,.22)}
     .site-top .btn-wpp:hover{background:var(--whatsapp-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,211,102,.32)}
     .site-top .btn-wpp svg{width:16px;height:16px}
+    .site-top .btn-email{display:inline-flex;align-items:center;gap:9px;background:var(--cyan);color:#fff;font-weight:700;font-size:14px;padding:11px 22px;border-radius:100px;transition:transform .2s,box-shadow .2s,background .2s;box-shadow:0 4px 16px rgba(0,180,216,.22);text-decoration:none}
+    .site-top .btn-email:hover{background:#0099b8;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,180,216,.32)}
+    .site-top .btn-email svg{width:16px;height:16px;flex-shrink:0}
     .site-top .navbar__toggle{display:none;color:var(--navy);padding:8px;background:transparent;border:0;border-radius:8px}
     .catalog-hero{background:radial-gradient(ellipse at 50% 0%,#fff 0%,var(--slate-50) 55%,var(--slate-100) 100%);padding:72px 0 56px;position:relative;overflow:hidden;border-bottom:1px solid var(--slate-200)}
     .catalog-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 30%,rgba(0,180,216,.08),transparent 55%);pointer-events:none}
@@ -72,9 +75,9 @@
     @media(max-width:1100px){.site-top .nav,.site-top .header__cta{display:none}.site-top .navbar__toggle{display:inline-flex;align-items:center;justify-content:center}.site-top .header{padding:14px 20px}}
     @media(max-width:768px){body.home-light{padding-top:0}.catalog-hero{padding:40px 0 32px}.catalog-hero__container{padding:0 20px}.catalog-hero__stats{gap:28px}.whatsapp-float{bottom:16px;right:16px;width:52px;height:52px}}
   </style>
-  <link rel="preload" href="style.css?v=20260608" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="style.css?v=20260608"></noscript>
-  <script src="script.js?v=20260608" defer></script>
+  <link rel="preload" href="style.css?v=20260806" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style.css?v=20260806"></noscript>
+  <script src="script.js?v=20260806" defer></script>
 </head>
 <body class="home-light">
 
@@ -127,6 +130,10 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 2.111.553 4.094 1.515 5.818L.057 23.64a.5.5 0 0 0 .603.603l5.822-1.458A11.948 11.948 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
           Fale Conosco
         </button>
+        <a class="btn-email" href="mailto:contato@manometrospresscontrol.com.br">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          Cotação por E-mail
+        </a>
       </div>
       <button class="navbar__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>

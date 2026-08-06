@@ -1,25 +1,30 @@
 /* Press Control — Script Principal */
 const WA_NUMBER = '553197113196';
 
-/* ── Supabase — captura de leads ──
-   anon key é pública por design (protegida por RLS: anon só insere, não lê). */
-const SUPABASE_URL = 'https://wibecdbznwzerenpnibc.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpYmVjZGJ6bnd6ZXJlbnBuaWJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA5MjI0MTQsImV4cCI6MjA5NjQ5ODQxNH0.oXWPZg7gYh5Xf7slDasU8Quanh_KNdYBnWpfvpi_RSk';
+/* ── Planilha Google — captura de leads ──
+   Apps Script publicado como app da web (código em tools/leads-planilha.gs).
+   A URL é pública, mas só grava linhas: não lê nada da planilha. */
+const WEBHOOK_PLANILHA = '';
 
-/* Grava o lead no Supabase. Fire-and-forget com keepalive: não bloqueia
-   o redirect pro WhatsApp e sobrevive à navegação da aba. */
+/* Grava o lead na planilha. Fire-and-forget: não bloqueia o redirect pro
+   WhatsApp. sendBeacon é entregue mesmo com a aba perdendo o foco; fetch com
+   keepalive é o fallback. text/plain de propósito — o Apps Script não responde
+   ao preflight de CORS que application/json dispararia. */
 function salvarLead(lead) {
+  if (!WEBHOOK_PLANILHA) return;
+  const corpo = JSON.stringify({
+    ...lead,
+    enviado_em: new Date().toISOString(),
+    referencia: document.referrer || 'acesso direto',
+  });
   try {
-    fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+    const blob = new Blob([corpo], { type: 'text/plain;charset=UTF-8' });
+    if (navigator.sendBeacon && navigator.sendBeacon(WEBHOOK_PLANILHA, blob)) return;
+    fetch(WEBHOOK_PLANILHA, {
       method: 'POST',
       keepalive: true,
-      headers: {
-        'apikey': SUPABASE_ANON_KEY,
-        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=minimal',
-      },
-      body: JSON.stringify(lead),
+      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+      body: corpo,
     }).catch(() => {});
   } catch (_) { /* nunca quebra o fluxo do usuário */ }
 }
